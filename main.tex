@@ -1,0 +1,280 @@
+\documentclass{vutinfth} % Remove option 'final' to obtain debug information.
+
+% Load packages to allow in- and output of non-ASCII characters.
+\usepackage{lmodern}        % Use an extension of the original Computer Modern font to minimize the use of bitmapped letters.
+\usepackage[T1]{fontenc}    % Determines font encoding of the output. Font packages have to be included before this line.
+\usepackage[utf8]{inputenc} % Determines encoding of the input. All input files have to use UTF8 encoding.
+
+% Extended LaTeX functionality is enables by including packages with \usepackage{...}.
+\usepackage{amsmath}    % Extended typesetting of mathematical expression.
+\usepackage{amssymb}    % Provides a multitude of mathematical symbols.
+\usepackage{mathtools}  % Further extensions of mathematical typesetting.
+\usepackage{microtype}  % Small-scale typographic enhancements.
+\usepackage[inline]{enumitem} % User control over the layout of lists (description, enumerate, description).
+\usepackage{multirow}   % Allows table elements to span several rows.
+\usepackage{booktabs}   % Improves the typesettings of tables.
+\usepackage{subcaption} % Allows the use of subfigures and enables their referencing.
+% \usepackage[ruled,linesnumbered,algochapter]{algorithm2e} % Enables the writing of pseudo code.
+\usepackage[usenames,dvipsnames,table]{xcolor} % Allows the definition and use of colors. This package has to be included before tikz.
+% \usepackage{nag}       % Issues warnings when best practices in writing LaTeX documents are violated.
+% \usepackage{todonotes} % Provides tooltip-like todo notes.
+\usepackage[colorlinks=false,hidelinks]{hyperref}  % Enables cross linking in the electronic document version. This package has to be included second to last.
+% \usepackage[acronym,toc]{glossaries} % Enables the generation of glossaries and lists fo acronyms. This package has to be included last.
+
+\usepackage{breakcites}
+\usepackage{amsthm}
+\usepackage[normalem]{ulem}
+\usepackage{multirow,bigdelim}
+\usepackage{enumitem}
+\usepackage{siunitx}
+\usepackage{musicography}
+\usepackage{tcolorbox}
+
+\tcbuselibrary{theorems}
+\tcbuselibrary{skins}
+\tcbuselibrary{breakable}
+
+
+\input{preamble/colors.tex}
+
+%% Environments using tcolorbox
+\newtcbtheorem[number within=chapter]
+    {thm}
+    {Theorem}
+    {
+        colframe = darkCharcoal,
+        colback = white,
+        coltitle = white,
+        breakable,
+        parbox = false,
+        separator sign none,
+        description delimiters parenthesis,
+        enhanced jigsaw,
+        sharp corners,
+        boxrule = 0.5pt,
+        toprule = 1pt,
+        bottomrule = 1pt,
+        left = 0.2cm,
+        right = 0.2cm,
+        top = 0.2cm,
+        titlerule = 0.5em,
+        toptitle = 0.3em,
+        bottomtitle = -0.2em,
+        %title style={white!25!black},   & <---- remove
+        % fonttitle=\bfseries,
+        fontupper = \normalsize
+    }
+    {thm}
+
+\newtcbtheorem
+    {prf}
+    {Proof}
+    {
+        colframe = davys,
+        colback = white,
+        coltitle = white,
+        breakable,
+        parbox = false,
+        enhanced jigsaw,
+        sharp corners,
+        boxrule = 0.5pt,
+        toprule = 1pt,
+        bottomrule = 1pt,
+        left = 0.2cm,
+        right = 0.2cm,
+        top = 0.2cm,
+        titlerule = 0.5em,
+        toptitle = 0.3em,
+        bottomtitle = -0.2em,
+        %title style={white!25!black},   & <---- remove
+        fonttitle=\itshape,
+        fontupper = \normalsize
+    }
+    {prf}
+
+\newtcbtheorem[number within=chapter]
+    {prp}
+    {Proposition}
+    {
+        colframe = sonicSilver,
+        colback = white,
+        coltitle = white,
+        breakable,
+        parbox = false,
+        separator sign none,
+        description delimiters parenthesis,
+        enhanced jigsaw,
+        sharp corners,
+        boxrule = 0.5pt,
+        toprule = 1pt,
+        bottomrule = 1pt,
+        left = 0.2cm,
+        right = 0.2cm,
+        top = 0.2cm,
+        titlerule = 0.5em,
+        toptitle = 0.3em,
+        bottomtitle = -0.2em,
+        %title style={white!25!black},   & <---- remove
+        % fonttitle=\bfseries,
+        fontupper = \normalsize
+    }
+    {prop}
+
+\newtcbtheorem[number within=chapter]
+    {crl}
+    {Corollary}
+    {
+        colframe = gray,
+        colback = white,
+        coltitle = white,
+        breakable,
+        parbox = false,
+        separator sign none,
+        description delimiters parenthesis,
+        enhanced jigsaw,
+        sharp corners,
+        boxrule = 0.5pt,
+        toprule = 1pt,
+        bottomrule = 1pt,
+        left = 0.2cm,
+        right = 0.2cm,
+        top = 0.2cm,
+        titlerule = 0.5em,
+        toptitle = 0.3em,
+        bottomtitle = -0.2em,
+        %title style={white!25!black},   & <---- remove
+        % fonttitle=\bfseries,
+        fontupper = \normalsize
+    }
+    {cor}
+
+\newtcbtheorem[number within=chapter]
+    {lem}
+    {Lemma}
+    {
+        colframe = spanish,
+        colback = white,
+        coltitle = white,
+        breakable,
+        parbox = false,
+        separator sign none,
+        description delimiters parenthesis,
+        enhanced jigsaw,
+        sharp corners,
+        boxrule = 0.5pt,
+        toprule = 1pt,
+        bottomrule = 1pt,
+        left = 0.2cm,
+        right = 0.2cm,
+        top = 0.2cm,
+        titlerule = 0.5em,
+        toptitle = 0.3em,
+        bottomtitle = -0.2em,
+        %title style={white!25!black},   & <---- remove
+        % fonttitle=\bfseries,
+        fontupper = \normalsize
+    }
+    {lem}
+
+\newtcbtheorem[number within=chapter]
+    {xmpl}
+    {Example}
+    {
+        colframe = argent,
+        colback = white,
+        coltitle = white,
+        breakable,
+        parbox = false,
+        % enhanced jigsaw,
+        sharp corners,
+        boxrule = 0.5pt,
+        toprule = 1pt,
+        bottomrule = 1pt,
+        left = 0.2cm,
+        right = 0.2cm,
+        top = 0.2cm,
+        titlerule = 0.5em,
+        toptitle = 0.3em,
+        bottomtitle = -0.2em,
+        %title style={white!25!black},   & <---- remove
+        % fonttitle=\bfseries,
+        fontupper = \normalsize
+    }
+    {ex}
+
+    
+\input{preamble/macros.tex}
+\input{preamble/meta_properties.tex}
+
+
+
+\begin{document}
+
+\frontmatter % Switches to roman numbering.
+% The structure of the thesis has to conform to the guidelines at
+%  https://informatics.tuwien.ac.at/study-services
+
+\addtitlepage{naustrian} % German title page (not for dissertations at the PhD School).
+\addtitlepage{english} % English title page.
+\addstatementpage
+%
+%\begin{danksagung*}
+%%\todo{Ihr Text hier.}
+%\end{danksagung*}
+%
+\begin{acknowledgements*}
+    \input{chapters/acknowledgements.tex}
+\end{acknowledgements*}
+
+\begin{kurzfassung}
+    \input{chapters/kurzfassung.tex}
+\end{kurzfassung}
+
+\begin{abstract}
+    \input{chapters/abstract.tex}
+\end{abstract}
+
+% Select the language of the thesis, e.g., english or naustrian.
+\selectlanguage{english}
+
+% Add a table of contents (toc).
+\tableofcontents % Starred version, i.e., \tableofcontents*, removes the self-entry.
+
+% Switch to arabic numbering and start the enumeration of chapters in the table of content.
+\mainmatter
+
+
+% Remove following line for the final thesis.
+\input{chapters/1-introduction.tex}
+\input{chapters/2-preliminaries.tex}
+\input{chapters/3-belief-change.tex}
+\input{chapters/4-varying-attitudes.tex}
+\input{chapters/5-social-merging.tex}
+\input{chapters/6-horn-belief-change.tex}
+\input{chapters/7-preference-change.tex}
+\input{chapters/8-conclusion.tex}
+
+%\backmatter
+
+% Use an optional list of figures.
+%\listoffigures % Starred version, i.e., \listoffigures*, removes the toc entry.
+
+% Use an optional list of tables.
+%\cleardoublepage % Start list of tables on the next empty right hand page.
+%\listoftables % Starred version, i.e., \listoftables*, removes the toc entry.
+
+% Use an optional list of alogrithms.
+%\listofalgorithms
+%\addcontentsline{toc}{chapter}{List of Algorithms}
+
+% Add an index.
+%\printindex
+
+% Add a glossary.
+%\printglossaries
+
+% Add a bibliography.
+\bibliographystyle{apalike}
+\bibliography{bibliography}
+
+\end{document}

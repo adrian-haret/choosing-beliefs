@@ -1,0 +1,328 @@
+%% notation
+\newcommand{\poo}[1]{\textcolor{renate}{{#1}-poo}}
+\renewcommand{\phi}{\varphi} % variable for formula
+\newcommand{\set}[1]{\{{#1}\}} % set
+\newcommand{\mods}[1]{[#1]} % models of a formula
+\newcommand{\defeq}{\stackrel{\mathclap{\normalfont\mbox{\tiny def}}}{=}} % definition equality
+
+
+
+
+
+
+%% propositional logic
+\newcommand{\Atoms}{A} % set of propositional atoms
+\renewcommand{\L}{\mathcal{L}} % language of propositional logic
+\newcommand{\U}{\mathcal{U}} % set of all interpretations
+\newcommand{\W}{\mathcal{W}} % set of interpretations
+\newcommand{\cn}{{\operatorname{con}}} % consistent
+\newcommand{\rf}{{\operatorname{ref}}} % refutable
+\newcommand{\comp}{{\operatorname{comp}}} % complete
+\newcommand{\dual}[1]{\overline{#1}} % dual of something
+\newcommand{\rnm}{\rho} % renaming
+\renewcommand{\P}{{\vec{\phi}}} % propositional profile
+\newcommand{\append}[2]{{{#1}+{#2}}} % appending a profile to another
+\newcommand{\px}{\varepsilon} % proxy for a set of interpretations
+
+%% fragments
+\newcommand{\cl}{{\operatorname{Cl}}} % closure
+\newcommand{\oocl}[1]{\mathrm{CL}_{#1}} % properties of a closure operator
+\newcommand{\oofr}[1]{\mathrm{FR}_{#1}} % properties of a fragment
+\newcommand{\horn}{\mathrm{Horn}} % Horn fragment
+
+
+%% assignments
+\newcommand{\as}{\preccurlyeq} % assignment
+\newcommand{\totalPre}{\mathrm{total}} % total
+\newcommand{\partialPre}{\mathrm{partial}} % partial
+
+
+%% preferences
+\newcommand{\oop}[1]{\mathrm{Pr}_{#1}} % properties of a preference relation
+\newcommand{\SPO}{\mathcal{O}} % strict partial orders on a set X
+\newcommand{\LIN}{\mathcal{F}} % linear, or full, orders on a set X
+\newcommand{\CHN}{\mathcal{C}} % linear, or full, orders on a set X
+\newcommand{\PRE}{\mathcal{P}} % preorders on a set X
+\newcommand{\TPRE}{\mathcal{T}} % total preorders on a set X
+\newcommand{\PP}{{\vec{\le}}} % preference profile
+
+
+%% distances
+\newcommand{\dd}{d} % distance symbol
+\newcommand{\ood}[1]{\mathrm{D}_{#1}} % property of a dissimilarity measure
+\newcommand{\hamming}{{\operatorname{H}}} % hamming distance
+\newcommand{\drastic}{{\operatorname{D}}} % drastic distance
+
+
+
+
+
+%% aggregation functions
+\newcommand{\agg}{{\operatorname{\oplus}}} % aggregation function
+\newcommand{\ooa}[1]{\mathsf{Ag}_{{#1}}} % properties of an aggregation function
+\newcommand{\ssum}{{\operatorname{sum}}} % sum aggregation function
+\newcommand{\leximin}{{\operatorname{leximin}}} % leximin
+\newcommand{\leximax}{{\operatorname{leximax}}} % leximax
+\newcommand{\lex}{{\operatorname{lex}}} % lexicographic order
+\newcommand{\ascending}{{\operatorname{asc}}}
+\newcommand{\descending}{{\operatorname{des}}}
+\renewcommand{\max}{{\operatorname{max}}}
+\renewcommand{\min}{{\operatorname{min}}}
+
+
+
+
+
+
+
+% choice functions 
+\newcommand{\cf}{\mathit{c}} % choice function
+\newcommand{\ooch}[1]{\mathrm{C}_{#1}} % property for choice function
+\newcommand{\scf}{\mathit{sc}} % social choice function
+\newcommand{\swf}{\mathit{sw}} % social welfare function
+\newcommand{\VV}{\vec{V}} % approval profile
+\newcommand{\abc}{{\operatorname{abc}}} % abc voting rule
+
+
+
+%% varieties of belief change
+\newcommand{\bc}{\musFlat{}} % general elief change operator
+\newcommand{\re}{\circ} % revision operator
+\newcommand{\en}{\triangleright} % enforcement operator
+\newcommand{\up}{\diamond} % update operator
+\newcommand{\me}{\Delta} % merging operator
+
+\newcommand{\ppr}[1]{\mathrm{R}_{#1}} % postulate for revision
+\newcommand{\ppu}[1]{\mathrm{U}_{#1}} % postulate for update
+\newcommand{\ppe}[1]{\mathrm{E}_{#1}} % postulate for enforcement
+\newcommand{\ppm}[1]{\mathrm{M}_{#1}} % postulate for merging
+\newcommand{\ppp}[1]{\mathrm{P}_{#1}} % postulate for preference change
+
+\newcommand{\oor}[1]{\mathrm{r}_{#1}} % properties of the assignment for revision
+\newcommand{\oou}[1]{\mathrm{u}_{#1}} % properties of the assignment for update
+\newcommand{\ooe}[1]{\mathrm{e}_{#1}} % properties of the assignment for enforcement
+\newcommand{\oom}[1]{\mathrm{m}_{#1}} % properties of the assignment for merging
+
+\newcommand{\exh}{{\operatorname{exh}}} % exhaustive revealed assignment
+\newcommand{\exc}{{\operatorname{exc}}} % exclusive revealed assignment 
+
+\newcommand{\wb}{\mathrm{wb}} % worst-to-best levels
+\newcommand{\bw}{\mathrm{bw}} % best-to-worst levels
+\newcommand{\rem}{\mathtt{rem}} % remove operator
+
+\newcommand{\symdiff}{\mathtt{symdiff}} % symmetric difference
+
+\newcommand{\add}{{\operatorname{add}}} % add operator
+
+
+
+
+
+%% revision with varying attitudes
+\newcommand{\ctr}{\mathrm{cen}} % centrality
+\newcommand{\dis}{\mathrm{dis}} % displacement
+\newcommand{\agr}{\mathrm{agr}} % agreeability index
+\newcommand{\dagr}{\mathrm{dagr}} % disagreeability index
+\newcommand{\summing}{\mathrm{sum}} % sum
+\newcommand{\forgetful}{\mathrm{F}}
+
+\newcommand{\bld}{{\mathrm{bold}}}
+\newcommand{\conservative}{{\mathrm{csrv}}}
+
+\newcommand{\IAHB}{\mathsf{IAHB}} % indifference to already held beliefs
+\newcommand{\STAB}{\mathsf{STAB}} % stability
+\newcommand{\NEUT}{\mathsf{NEUT}} % neutrality
+
+
+%% social merging
+\newcommand{\perm}{\sigma} % permutations
+\newcommand{\bndl}{\rightsquigarrow} % bundling operator
+
+\newcommand{\supp}{{\operatorname{supp}}} % support of one interpretation over another
+
+\newcommand{\MAJ}{\mathsf{MAJ}}
+\newcommand{\ARB}{\mathsf{ARB}}
+
+\newcommand{\ANON}{\mathsf{ANON}}
+\newcommand{\BNDL}{\mathsf{BNDL}}
+\newcommand{\NOND}{\mathsf{NOND}} % non-dictatorship
+\newcommand{\WPRT}{\mathsf{wPAR}} % weak Pareto
+\newcommand{\SPRT}{\mathsf{sPAR}} % strong Pareto
+\newcommand{\CSOV}{\mathsf{CSOV}} % citizen sovereignty
+\newcommand{\COND}{\mathsf{COND}} % condorcet
+\newcommand{\MAJR}{\mathsf{MAJR}} % majority
+\newcommand{\MONO}{\mathsf{MONO}}
+\newcommand{\PART}{\mathsf{PART}}
+\newcommand{\RSYM}{\mathsf{RSYM}}
+\newcommand{\RSVB}{\mathsf{RSVB}}
+\newcommand{\ICLN}{\mathsf{ICLN}}
+\newcommand{\CONS}{\mathsf{CONS}}
+\newcommand{\HOMG}{\mathsf{HOMG}}
+\newcommand{\INDC}{\mathsf{INDC}}
+\newcommand{\SLFA}{\mathsf{SLFA}}
+ 
+
+
+
+
+%% manipulability
+\newcommand{\w}{w}
+\newcommand{\hammingdist}{d_H}
+\newcommand{\drasticdist}{d_D}
+\newcommand{\aggsum}{\Sigma}
+\newcommand{\aggmax}{\mathtt{max}}
+\newcommand{\agggmax}{\mathtt{gmax}}
+\newcommand{\aggop}[2]{\Delta^{#1}_{#2}}
+\newcommand{\Aggop}[1]{\Delta^{#1}}
+\newcommand{\Agg}[3]{\Aggop{{#1}}_{{#2}}({#3})}
+\newcommand{\df}{d,\,f}
+\newcommand{\hs}{\hammingdist,\,\aggsum}
+\newcommand{\hg}{\hammingdist,\,\agggmax}
+\newcommand{\hm}{\hammingdist,\,\aggmax}
+\newcommand{\ds}{\drasticdist,\,\aggsum}
+\newcommand{\dg}{\drasticdist,\,\agggmax}
+\newcommand{\dm}{\drasticdist,\,\aggmax}
+
+\newcommand{\Amp}{\Agg{}{\mu}{P}}
+\newcommand{\Adfmp}{\Agg{\df}{\mu}{P}}
+\newcommand{\Ahsmp}{\Agg{\hs}{\mu}{P}}
+\newcommand{\Ahmmp}{\Agg{\hm}{\mu}{P}}
+\newcommand{\Ahgmp}{\Agg{\hg}{\mu}{P}}
+\newcommand{\Adsmp}{\Agg{\ds}{\mu}{P}}
+\newcommand{\Adgmp}{\Agg{\dg}{\mu}{P}}
+
+\newcommand{\Am}[1]{\Agg{}{\mu}{{#1}}}
+\newcommand{\Adfm}[1]{\Agg{\df}{\mu}{{#1}}}
+\newcommand{\Ahsm}[1]{\Agg{\hs}{\mu}{{#1}}}
+\newcommand{\Ahmm}[1]{\Agg{\hm}{\mu}{{#1}}}
+\newcommand{\Ahgm}[1]{\Agg{\hg}{\mu}{{#1}}}
+\newcommand{\Adsm}[1]{\Agg{\ds}{\mu}{{#1}}}
+\newcommand{\Adgm}[1]{\Agg{\dg}{\mu}{{#1}}}
+
+\newcommand{\acc}{{\operatorname{acc}}}
+\newcommand{\cred}{{\operatorname{cred}}}
+\newcommand{\skept}{{\operatorname{skept}}}
+\newcommand{\no}{\mathtt{No}}
+\newcommand{\credsupp}{{\cred\operatorname{supp}}}
+\newcommand{\skeptsupp}{{\skept\operatorname{supp}}}
+
+\newcommand{\icred}{i_{\cred}}
+\newcommand{\iskept}{i_{\skept}}
+\newcommand{\ino}{i_{\no}}
+
+\newcommand{\idw}{i_{\mathtt{dw}}}
+\newcommand{\ids}{i_{\mathtt{ds}}}
+\newcommand{\ip}{i_{\mathtt{p}}}
+
+\newcommand{\truth}[1]{{#1}^{\mathtt{t}}}
+\newcommand{\manip}[1]{{#1}^{\mathtt{f}}}
+
+
+
+
+
+
+
+% proportionality
+\newcommand{\sat}{s} % satisfaction
+
+\newcommand{\amax}{\mathrm{max}}
+\newcommand{\amin}{\mathrm{min}}
+\newcommand{\mer}[2]{\Delta^{#1}_{#2}}
+
+\newcommand{\IC}[1]{\mathsf{IC}_{#1}} % IC postulates
+\newcommand{\MI}[1]{\mathsf{D}_{#1}} % properties of a maximizing assignment
+\newcommand{\MA}[1]{\mathsf{O}_{#1}} % properties of a minimizing assignment
+\newcommand{\SM}[1]{\mathsf{S}_{#1}} % properties of a satisfaction measure
+
+\newcommand{\av}{\mathrm{AV}}
+\newcommand{\sav}{\mathrm{SAV}}
+\newcommand{\pav}{\mathrm{PAV}}
+\newcommand{\bpav}{\mathrm{bPAV}}
+\newcommand{\hd}{{h(s_d)}}
+\newcommand{\hhamming}{\mathrm{hH}}
+\newcommand{\hdrastic}{\mathrm{hD}}
+\newcommand{\sdrastic}{\mathrm{sD}}
+%\newcommand{\csat}{\mathit{csat}}
+%\newcommand{\bsat}{\mathit{bsat}}
+\newcommand{\CPROP}{\mathsf{CPROP}} % weak classical proportionality
+\newcommand{\BPROP}{\mathsf{BPROP}} % weak binary proportionality
+
+
+
+
+
+%Horn update
+\newcommand{\HPH}{{\mathrm{HPH}}}
+\newcommand{\HHH}{{\mathrm{HHH}}}
+
+\newcommand{\intrs}{\operatorname{ints}} % intersect function
+
+\newcommand{\PCMPL}{\mathrm{pC}} % pair compliance
+\newcommand{\TCMPL}{\mathrm{tC}} % triple compliance
+\newcommand{\dTCMPL}{\mathrm{dTCMPL}} % extended triple compliance
+\newcommand{\HC}{\mathrm{HC}} % Horn compliance
+
+\newcommand{\SCON}{{\mathrm{SC}}}
+\newcommand{\HSCON}{{\mathrm{HSC}}}
+\newcommand{\SCXH}{{\mathrm{SC}{-}\mathrm{exh}}} % Suzumura consistency for exhaustive 
+\newcommand{\SCXC}{{\mathrm{SC}{-}\mathrm{exc}}} % Suzumura consistency for exclusive
+
+\newcommand{\A}{\mathsf{A}}
+\newcommand{\Astar}{\mathsf{A}\star}
+\newcommand{\prop}{\mathcal{L}}
+\newcommand{\krom}{\mathsf{2CNF}}
+\newcommand{\lits}{\mathsf{1CNF}}
+\newcommand{\Lhorn}{\L_{\mathsf{Horn}}}
+\newcommand{\Lkrom}{\L_{\mathsf{2CNF}}}
+\newcommand{\Llits}{\L_{\mathsf{1CNF}}}
+\newcommand{\closureOp}{\mathsf{Cl}}
+\newcommand{\maj}{\mathrm{maj}}
+\newcommand{\id}{\mathrm{id}}
+
+\newcommand{\sd}{\bigtriangleup} %sd for symmetric difference
+\newcommand{\mins}[1]{\min_\subseteq {#1}}
+\newcommand{\mint}[1]{\min_{\le_w^T}  {#1}}
+\newcommand{\minb}[1]{\min_{\le_w^B}  {#1}}
+\newcommand{\minc}[1]{\min_{\textnormal{\tiny card}} {#1}}
+
+\newcommand{\ffrm}[2]{\px^{{#1}}_{{#2}}} % formula representing #2 in fragment #1
+\newcommand{\frm}[1]{\px_{{#1}}} % formula representing #1
+\newcommand{\srev}{\lhd} % revealed ranking strict
+\newcommand{\rev}{\unlhd} % revealed ranking
+
+\newcommand{\rop}{\circ} %change operator
+\newcommand{\uop}{\diamond} %update operator
+\newcommand{\uopB}{\diamond^B} % basic update operator
+\newcommand{\uopT}{\diamond^T} %trivial update operator
+\newcommand{\upB}[2]{{#1}\uopB {#2}} % basic update #1 by #2
+\newcommand{\upT}[2]{{#1}\uopT {#2}} % trivial update #1 by #2
+\newcommand{\upp}[3]{{#1}\uop^{#3} {#2}} % update #1 by #2 of type #3
+\newcommand{\upF}{\uop^F}
+\newcommand{\upW}{\uop^W}
+\newcommand{\fo}[2]{#1\upF #2} %Forbus's operator
+\newcommand{\wi}[2]{#1\upW #2} %Winslett's operator
+
+%% postulates and properties
+\newcommand{\faith}[1]{$\mathsf{f}_{#1}$} % faithful assignment properties
+
+
+%% preference change
+\newcommand{\p}{\pi} % preference order being revised
+\renewcommand{\d}{\delta} % set of direct comparisons
+\renewcommand{\o}{o} % preference order that is revising
+\newcommand{\pP}{\mathsf{P}} % postulate for preference revision
+\newcommand{\cyc}[2]{\kappa_{#1}^{#2}} % direct comparisons of #1 involved in a cycle induced by #2
+\newcommand{\cycfree}[2]{\alpha_{#1}^{#2}} % cycle free part of #1 \cup #2
+\newcommand{\upper}[1]{\lfloor{#1}\rfloor} % 
+\newcommand{\upperd}[1]{\lfloor{#1}\rfloor^\mathsf{D}} % 
+
+\newcommand{\addc}{{\operatorname{addc}}} % add comparison operator
+
+
+\newcommand{\dir}{\delta} % direct comparisons
+\newcommand{\nb}{\mathrm{nb}} % next-best elements
+\newcommand{\lvl}{\mathit{lvl}} % best-to-worst levels
+\newcommand{\tightplus}[2]{{#1}{+}{#2}} % writes #1 {+} #2
+\newcommand{\drc}[1]{({#1},\tightplus{#1}{1})} % direct comparison starting with #1
+\newcommand{\asignment}{a} % assignment

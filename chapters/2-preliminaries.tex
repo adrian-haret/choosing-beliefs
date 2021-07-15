@@ -1,0 +1,1452 @@
+\chapter{Preliminaries}\label{ch:2}
+We generally aim to introduce notation on a need-to-know basis.
+However, there are some notions that permeate the entirety of this work and 
+thus can suffer no delay.
+
+% \section{\poo{Renate}}
+% \poo{Renate} is a very sweet \poo{being}. I love her very much and I enjoy spending time with her.
+% She is nice.
+% Very very nice.
+% She has nice sweaters and socks.
+% And sometimes they match.
+% I will give her a \poo{kissy} now.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+\section{Propositional logic}\label{sec:2-prop-logic}
+We will assume a finite set 
+$\Atoms$ of \emph{propositional atoms},
+intended to represent issues that can be 
+the subject of reasoning, thought or deliberation.
+A \emph{literal $l$} is either an atom $p$, 
+in which case $l$ is a \emph{positive literal},
+or its negation $\lnot p$, in which case $l$ is a \emph{negative literal}.
+If $l$ is a positive literal $p$ or a negative literal $\lnot p$, 
+the \emph{dual $\dual{l}$ of $l$} is $\lnot p$ or $p$, respectively.
+
+The \emph{set $\L$ of propositional formulas} is generated from $\Atoms$
+using the usual propositional connectives ($\land$, $\lor$, $\lnot$, $\rightarrow$ and $\leftrightarrow$),
+as well as the constants $\bot$ and $\top$. 
+Propositional formulas in $\L$	will be used to represent either 
+attitudes with respect to the issues in $\Atoms$ 
+assumed to stem from a single agent $i$
+and typically denoted by $\phi$, 
+or $\phi_{i}$ when we need to be explicit about the agent 
+supplying the attitude, 
+or information with respect to these issues,
+assumed to stem from some authoritative source 
+and typically denoted by $\mu$.
+We will want to be flexible, to a certain degree, 
+with respect to what sort of attitude a formula 
+$\phi$, or $\phi_{i}$, actually represents:
+the nominal term will be belief, i.e., conviction about what is the case,
+but $\phi$ can also encode opinion about what should be the case,
+or what is desired to be the case;
+in general, we will take $\phi$ to encode some constraint 
+on the issues in $\Atoms$ the agent is partial to,
+and will be explicit when using it with a more concrete meaning.
+
+An \emph{interpretation $w$} 
+(alternatively, a \emph{truth-value assignment}, or \emph{outcome}) 
+is a function mapping every atom in $\Atoms$ to either \emph{true} or \emph{false},
+and typically denoted by $w$ or $v$.
+Since an interpretation $w$ is completely determined 
+by the set of atoms in $\Atoms$ it makes true,
+we will identify $w$ with this set of atoms
+and, if there is no danger of ambiguity, display $w$ 
+as a word where the letters are the atoms assigned to true.
+The \emph{universe $\U$} is the set of all interpretations 
+for formulas in $\L$.
+
+The models of a propositional formula $\phi$ are the interpretations that satisfy it,
+and we write $[\phi]$ for the set of models of $\phi$.
+If $\phi_1$ and $\phi_2$ are propositional formulas,
+we say that \emph{$\phi_1$ entails $\phi_2$}, 
+written $\phi_1 \models \phi_2$, if $\mods{\phi_1}\subseteq\mods{\phi_2}$,
+and that they are \emph{equivalent}, written $\phi_1 \equiv \phi_2$, if $\mods{\phi_1}= \mods{\phi_2}$.
+A propositional formula $\phi$ is \emph{consistent} if $[\phi]\neq\emptyset$
+and \emph{refutable} if $[\phi]\neq\U$.
+The models of $\bot$ and $\top$ are $[\bot]=\emptyset$ and $[\top]=\U$,
+i.e., $\bot$ has no model and $\top$ is satisfied by every interpretation in the universe.
+A propositional formula is \emph{complete} if it has exactly one model.
+Complete formulas are sometimes denoted by $\dot{\phi}$, with the dot suggesting that 
+$\dot{\phi}$ has one model.
+The sets of consistent, refutable and complete formulas are $\L_\cn$, $\L_\rf$ and $\L_\comp$, respectively.
+
+\begin{xmpl}{Propositional formulas and their semantics}{2-propositional-formulas}
+	The scenario in Example \ref{ex:1-revision-motivation}
+	can be modeled by using propositional variables 
+	to represent the issues under contention:
+	that humans use tools ($a$),
+	that chimpanzees are part of a different species from humans ($b$)
+	and that chimpanzees use tools ($c$).
+	Thus, the set of atoms is $\Atoms=\{a,b,c\}$, 
+	with the universe, i.e., the set of all possible interpretations, 
+	being $\U=\{\emptyset,a,b,c,ab,ac,bc,abc\}$.
+
+	One of the prevailing beliefs of the primatology community, 
+	circa $1960$, can be taken to be that 
+	humans were the only species capable of using tools,
+	which we can approximate here with the implication
+	that if humans use tools and chimpanzees are different from humans, 
+	then there is no way that chimpanzees can use tools,
+	represented by the propositional formula 
+	$\phi_1 = (a\land b)\rightarrow\lnot c$
+	whose set of models is $[\phi_1]=\{\emptyset,a,b,c,ab,ac,bc\}$.
+	Note that the interpretations where $a$ and $c$ are true and $b$ is false,
+	i.e., the outcome according to which humans and chimpanzees use tools and 
+	chimpanzees are the same species as humans, is written as $ac$.
+	It is straightforward to see that $\phi_1$ is both consistent and refutable, but not complete. 
+	
+	To $\phi_1$ we can add the common-sense beliefs that 
+	humans use tools and that they are truly different from humans,
+	i.e., the formula $\phi_2=a\land b$,
+	with $[\phi_2]=\{ab, abc\}$,
+	to get a snapshot of the ensemble of ideas 
+	that Jane Goodall eventually proved wrong.
+	This ensemble can be represented as the
+	conjunction of the formulas $\phi_1$ and $\phi_2$,
+	i.e., the propositional formula 
+	$\phi = \phi_1\land\phi_2 = (a\land b)\land ((a\land b)\rightarrow\lnot c)$.
+	It holds that $[\phi]=\{ab\}$, and hence $\phi$ is complete.
+\end{xmpl}
+
+There are certain transformations we will want 
+to subject propositional formulas to
+in order to set limits for belief change operators:
+they include replacing literals with their duals,
+changing the order of elements in a tuple and renaming atoms.
+These transformations are usually done to the syntax of the formulas,
+but they also have effects on the semantic level,
+and we must dedicate a few paragraphs to charting out these effects.
+Thus, if $\phi$ is a propositional formula, 
+the \emph{dual $\dual{\phi}$ of $\phi$}
+is a formula obtained by replacing 
+every literal $l$ in $\phi$ with its dual $\dual{l}$.
+A similar operation can be defined on the semantic side:
+if $w$ is an interpretation, the \emph{dual $\dual{w}$ of $w$} 
+is the complement of $w$, i.e, $\dual{w} = \Atoms\setminus w$.
+If $\W$ is a set of interpretations, 
+the \emph{dual $\dual{\W}$ of $\W$} is the set of interpretations 
+containing the duals of the interpretations in $\W$,
+i.e., $\dual{\W} = \{\dual{w}\mid w\in\W\}$.
+
+\begin{xmpl}{Duals of formulas and their models}{2-duals}
+	For the set of atoms $\Atoms=\set{a,b,c}$ and 
+	the propositional formula $\phi_1 = (a\land b)\rightarrow\lnot c$, 
+	then the dual of $\phi_1$ is the formula
+	$\dual{\phi_1} = (\dual{a}\land\dual{b})\rightarrow\dual{\lnot c} = (\lnot a \land \lnot b)\rightarrow c$.
+	The set of models of $\phi_1$ is $[\phi_1]=\{\emptyset,a,b,c,ab,ac,bc\}$,
+	with the duals of interpretation $\emptyset$ and $a$ being
+	$\dual{\emptyset}=abc$ and
+	$\dual{a} = bc$.
+	Note that $\dual{[\phi_1]}=\{abc,bc,ac,ab,c,b,a\}$.
+\end{xmpl}
+
+In Example \ref{ex:2-duals} it is the case 
+that models of the dual $\dual{\phi}$ of $\phi$
+are exactly the duals of the models of $\phi$.
+Though we do not provide a formal proof, 
+we mention here that this holds more generally.
+
+\begin{prp}{}{2-duals-commute}
+	If $\phi$ is a propositional formula, then $[\dual{\phi}] = \dual{[\phi]}$.
+\end{prp}
+
+We will use the notion of a dual of a formula $\phi$ in 
+Chapters \ref{ch:4} and \ref{ch:5}, to encode something like 
+the point of view diametrically opposed to $\phi$. 
+Throughout it all, Proposition \ref{prop:2-duals-commute}
+will repeatedly come in handy.
+
+If $N=\{1,\dots,n\}$ is a set of integers, a \emph{permutation $\perm$ of $N$} 
+is the familiar notion of a bijective function $\perm\colon N\rightarrow N$.
+If $\perm$ is a permutation of $N=\{1,\dots,n\}$, then \emph{the inverse $\perm^{-1}$ of $\perm$}
+is the bijection $\perm^{-1}\colon N\rightarrow N$ such that $\sigma^{-1}(\perm(i))=i$,
+for any $i\in N$,
+i.e., the permutation that reverses $\perm$.
+We will typically use permutations in a context in which
+$N=\{1,\dots,n\}$ is a set of agents,
+each with their own opinion $\phi_{i}$,
+and $(\phi_{i})_{1\le i \le n}$ is the $n$-tuple 
+that contains their opinions.
+In this context, $(\phi_{\perm(i)})_{1\le i \le n}$
+is the tuple that swaps the order of the agents around.
+
+On occasion we will also want to swap atoms in $\Atoms$ around:
+technically, if atoms in $\Atoms$ are indexed by an integer, 
+e.g., $a_1$, $a_2$, \dots, this can be achieved simply by a permutation of the indices.
+But since, for presentation purposes, we usually denote atoms with distinct letters,
+we introduce a special notion, called a renaming of the atoms in $\Atoms$.
+Formally, a \emph{renaming $\rnm$ of $\Atoms$} is exactly what we expect it to be,
+i.e., a bijective function $\rnm\colon\Atoms\rightarrow\Atoms$.
+The \emph{inverse $\rnm^{-1}$ of $\rnm$} 
+is a permutation such that $\rnm^{-1}(\rnm(p))=p$, for any atom $p\in\Atoms$.
+If $\phi$ is a propositional formula, the \emph{renaming $\rnm(\phi)$ of $\phi$}
+is a formula $\rnm(\phi)$ whose atoms are replaced according to $\rnm$.
+On the semantic side,
+if $w$ is an interpretation and $\rnm$ is a renaming of $\Atoms$,
+the \emph{renaming $\rnm(w)$ of $w$} is an interpretation obtained 
+by replacing every atom $p$ in $w$ with $\rnm(p)$.
+If $\W$ is a set of interpretations, the \emph{renaming $\rnm(\W)$ of $\W$} is 
+defined as $\rnm(\W)=\{\rnm(w)\mid\w\in\W\}$,
+i.e., the set of interpretations whose elements are the renamed interpretations in $\W$.
+
+\begin{xmpl}{Permutations and renamings}{2-renaming}
+	For the set $N=\{1,2,3,4\}$ of Academy members 
+	in Example \ref{ex:1-merging-motivation}, 
+	consider the permutation $\perm$ 
+	according to which $\perm(1)=2$, $\perm(2)=3$, $\perm(3)=4$ and $\perm(4)=1$.
+	If $(\phi_1,\phi_2,\phi_3,\phi_4)$ is a tuple consisting of their opinions,
+	then applying the permutation $\perm$ to $N$ results in 
+	$(\phi_2,\phi_3,\phi_4,\phi_1)$
+
+	If the set of atoms is $\Atoms=\{a,b,c\}$,
+	consider a renaming $\rnm$ such that
+	$\rnm(a)=b$,
+	$\rnm(b)=c$ and
+	$\rnm(c)=a$.
+	If $a$, $b$ and $c$
+	stand for the directors 
+	Alma Har'el, Bong Joon Ho and C\'eline Sciamma, respectively,
+	from in Example \ref{ex:1-merging-motivation},
+	then the first Academy member's opinion 
+	can be represented by the propositional formula
+	$\phi_1 = a\land b$.
+	Applying the renaming $\rnm$ gives us that
+	$\rnm(\phi_1)= (\rnm(a)\land\rnm(b)) = (b\land c)$.
+	On the semantic side,
+	we have that $[\phi_1] = \{ab,abc\}$ and 
+	$\rnm([\phi_1]) = \{\rnm(ab), \rnm(abc)\} 
+	= \{bc,abc\}$.
+\end{xmpl}
+
+In Example \ref{ex:2-renaming} it holds that the set of models 
+of a renamed formula $\phi$ 
+is the same as the set of renamed models of $\phi$. 
+This, also, holds more generally.
+
+\begin{prp}{}{2-renamings-commute}
+	If $\rnm$ is a renaming of the set $\Atoms$ of atoms and
+	$\phi$ is a propositional formula, 
+	then $[\rnm(\phi)] = \rnm([\phi])$.
+\end{prp}
+
+Another thing we will be eminently interested in is 
+the relationship between a propositional formula and its semantics,
+consisting of sets of interpretations:
+primarily, the assurance that we can move freely between the two.
+This is done through the notion of proxy formulas.
+Thus, if $\W = \{w_1, \dots, w_k\}$ is a set of interpretations, 
+an \emph{$\L$-proxy $\px_\W$ of $\W$}
+is a propositional formula such that $[\px_\W]=\{w_1,\dots,w_k\}$.
+At the same time,
+an \emph{$\L$-antiproxy $\px_{-\W}$ of $\W$} is a propositional formula 
+$\px_{-\W}$ such that $[\px_{-\W}]=\U\setminus\{w_1,\dots,w_k\}$.
+We will want to refer to proxies and antiproxies through various shorthands.
+Thus, if there is no danger of ambiguity, we write 
+$\px_{w_1,\dots,w_k}$, or even more simply, $\px_{1,\dots,k}$,
+and $\px_{-w_1,\dots,-w_k}$, or $\px_{-1,\dots,-k}$,
+instead of $\px_\W$ and $\px_{-\W}$, respectively.
+Intuitively, an $\L$-proxy of a set $\W$ of interpretations 
+is a propositional formula that encodes, possibly in a compact way, 
+all the outcomes in $\W$,
+while an $\L$-antiproxy is a propositional formula that 
+encodes the complement of $\W$.
+
+\begin{xmpl}{Proxies and antiproxies}{2-propositional-proxy}
+	If $\Atoms=\{a,b\}$ is the set of atoms, 
+	an $\L$-proxy of the set of interpretations $\W=\{\emptyset,ab\}$ is the 
+	disjunctive normal form (DNF) formula
+	$\phi_1 = (\lnot a\land\lnot b)\lor( a \land b)$.
+	Note, $\phi_1$ is not the only $\L$-proxy of $a$ and $b$;
+	$\phi_2=a\leftrightarrow b$ works just as well.
+	An $\L$-antiproxy of $\W$ is a formula whose set of models is
+	$\U\setminus\W = \{a,b\}$,
+	examples of which are $\phi_3 = (a\land\lnot b)\lor(\lnot a\land b)$ or $\phi_4 = (a\leftrightarrow\lnot b)$.
+\end{xmpl}
+
+As Example \ref{ex:2-propositional-proxy} makes clear, 
+$\L$-proxies (and $\L$-antiproxies)
+of sets of interpretations always exist (e.g., as DNF formulas),
+but are not necessarily unique. For our purposes, existence 
+is much more important than uniqueness. 
+Since we will typically try to abstract away as much as possible from the syntax 
+of formulas, non-uniqueness of a proxy formula will usually not be a factor 
+in the results to follow.
+
+In a multi-agent scenario we assume a set $N=\{1,\dots,n\}$ of $n$ agents.
+An \emph{$\L$-profile $\P$} (alternatively, a \emph{propositional profile $\P$}) 
+is an $n$-tuple $\P=(\phi_1,\dots,\phi_n)$ of propositional formulas,
+also written as $\P=(\phi_i)_{1\le i \le n}$,
+where each formula $\phi_i$ is assumed to correspond to an agent $i$.
+The set of all propositional profiles is $\L^n$.
+As for the single-agent case, we want to be liberal with respect 
+to the meaning assigned to $\phi_i$:
+it can represent agent $i$'s belief, preference, judgments, goals or knowledge.
+The \emph{models $[\P]$ of a propositional profile $\P=(\phi_1,\dots,\phi_n)$} 
+are the interpretations satisfying all 
+formulas in $\P$, i.e., $[\P]=\bigcap_{i=1}^n[\phi_i]$.
+As for a propositional formula, a propositional profile $\P$ is \emph{consistent} 
+% and \emph{refutable} 
+if $[\P]\neq\emptyset$.
+% and $[\P]\neq\U$, respectively.
+A propositional profile is \emph{complete} 
+if every formula in it is complete.
+The sets of consistent and complete profiles are $\L^n_\cn$ and $\L^n_\comp$, respectively.
+If $\P_1=(\phi_{i})_{1\le i \le n}$ and $\P_2=(\phi_{i})_{n+1\le i \le p}$ are profiles, 
+$\append{\P_1}{\P_2}$ is the profile $\P_1+\P_2=(\phi_i)_{1\le i\le p}$ 
+obtained by appending $\P_2$ to $\P_1$. 
+If $\phi$ is a formula and there is no danger of ambiguity, 
+we write $\append{\P}{\phi}$ instead of $\append{\P}{(\phi)}$.
+Two profiles $\P_1$ and $\P_2$ are \emph{equivalent} 
+if there exists a bijection $f\colon\P_1\rightarrow\P_2$ such that,
+for any $\phi_i\in\P_1$, it holds that $\phi_i\equiv f(\phi_i)$.
+
+\begin{xmpl}{Propositional profiles}{propositional-profile}
+	The scenario in Example \ref{ex:1-merging-motivation} can be modeled 
+	by using propositional variables to stand for the best director candidates:
+	Alma Har'el ($a$),
+	Bong Joon Ho ($b$)
+	and 
+	C\'eline Sciamma ($c$).
+	The opinions of the four Academy members can be represented 
+	by four propositional formulas $\phi_1$, $\phi_2$, $\phi_3$ and $\phi_4$,
+	with 
+	$\phi_1 = a\land b$,
+	$\phi_2 = a\land (b\lor c)$,
+	$\phi_3 = \lnot a\land b\land \lnot c$,
+	$\phi_4 = \lnot a \land \lnot b \land c$.
+	The profile consisting of the (opinions of) the first three Academy members 
+	is $\P = (\phi_1,\phi_2,\phi_3)$.
+	If we append the fourth member, the profile is 
+	$\append{\P}{\phi_4} = (\phi_1,\phi_2,\phi_3, \phi_4)$.
+\end{xmpl}
+
+% \section{Fragments}\label{sec:1-fragments}
+% At its most general, a fragment $\L_\star$ of propositional logic is a set $\L_\star\subseteq\L$ of propositional formulas.
+% But the fragment we will be mainly interested in is instance of a broader class of fragments,
+% that can be characterized via a semantical property of their semantics. To that end, we need to introduce
+% the notion of a closure operator.
+
+% A \emph{closure operator $\cl$} is a mapping $\cl\colon 2^\U\rightarrow 2^\U$ 
+% that satisfies, for any sets of interpretations $\W$, $\W_1$ and $\W_2$,
+% the conditions $\oocl{1-3}$ below:
+
+% \begin{itemize}[leftmargin=3em]
+% 	\item[($\oocl1$)] $\cl(\emptyset)=\emptyset$.
+% 	\item[($\oocl2$)] If $|\W|=1$, then $\cl(\W)=\W$.
+% 	\item[($\oocl3$)] If $\W_1\subseteq \W_2$, then $\cl(\W_1)\subseteq\cl(\W_2)$.
+% \end{itemize}
+
+% If $\cl_\star$ is a closure operator and $\W$ is a set of interpretations such that $\cl_\star(\W)=\W$,
+% we say that $\W$ is $\star$-closed.
+% A set $\L_\star\subseteq\L$ of propositional formulas is a 
+% \emph{closed fragment of propositional logic} if there exists a closure-operator $\cl_\star$ such that,
+% for any formulas $\phi$, $\phi_1$ and $\phi_2$ in $\L_\star$ and set $\W$ of interpretations, 
+% properties $\oofr{1-3}$ below are satisfied: 
+% \begin{itemize}
+% 	\item[($\oofr1$)] $\cl_\star([\phi]) = [\phi]$.
+% 	\item[($\oofr2$)] If $\cl_\star(\W)=\W$, then there exists $\phi\in\L_\star$  with $[\phi]=\W$;
+% 	\item[($\oofr3$)] $\phi_1\land\phi_2\in\L_\star$.
+% \end{itemize}
+
+% Property $\oofr1$ says that the set of models of any formula $\phi$ in $\L_\star$ is closed under the
+% operator $\cl_\star$.
+% Property $\oofr2$ says that any $\star$-closed set of interpretations is represented in $\L_\star$
+% by some formula $\phi$.
+% Property $\oofr3$ says that $\L_\star$ is closed under conjunction.
+
+% Given a closed fragment $\L_\star$ and interpretations $w_1$,\dots,$w_k$, 
+% an \emph{$\L_\star$-proxy of $w_1$, \dots, $w_k$}
+% is a formula $\px^\star_{w_1,\dots,w_k}$ such that 
+% $[\px^\star_{w_1,\dots,w_k}]=\cl_\horn(\{w_1,\dots,w_k\})$.
+% If there is no danger of ambiguity we promptly drop the superscript and write simply $\px_{1,\dots,k}$.
+
+% Note that standard propositional logic $\L$ is a closed fragment (of itself),
+% characterized by the identity closure operator $\mathrm{id}({\W})=\W$.
+% This allows us to see that the notion of an $\L_\star$-proxy is a 
+% generalization of the notion of an $\L$-proxy.
+% Intuitively, the set of interpretations $\{w_1,\dots,w_k\}$ might not be representable in the fragment $\L_\star$,
+% but the set $\cl_\star(\{w_1,\dots,w_k\})$ is the `nearest' set that is. 
+
+% Many well-known fragments of propositional logic are captured by this notion, but here we will be
+% focused mainly on the Horn fragment.
+% A clause is a \emph{Horn clause} if it contains at most one positive literal.
+% A propositional formula $\phi$ is a \emph{Horn formula} if it is a conjunction of Horn clauses.
+% The \emph{Horn fragment $\L_\horn$} is the set of all Horn formulas.
+% The Horn fragment $\L_\horn$ is associated to the operator
+% $\cl_\horn$, defined as the fixed point of the function:
+% $$
+% \bigcap\W = \{ \w_1\cap \w_2 \mid \w_1,\w_2\in \W \}.
+% $$
+
+% \begin{xmpl}{}{horn-representability}
+% 	For $\Atoms=\{a,b,c\}$, and interpretations $ab$ and $ac$,
+% 	we have that $\W=\{ab,ac\}$ is not $\horn$-closed, since 
+% 	the intersection of interpretations $ab$ and $ac$ (i.e., the interpretation $a$)
+% 	is not in $\W$. However, $\cl_\horn(\W)=\W\cup\{a\}$ is $\horn$-representable,
+% 	with the formula $\phi=(a\land b)\rightarrow\bot$ as a $\horn$-proxy.
+% \end{xmpl}
+
+\section{Preferences: preorders, partial and total}\label{sec:2-preferences}
+% If $Y$ is a set,
+% a binary relation $\le$ on $Y$ is a set $\le\subseteq Y\times Y$, 
+% i.e., a set of pairs of elements from $Y$.
+
+We will typically use binary relations $\le$ on a set $X$ of alternatives
+to encode some kind of preference 
+(or priority, or plausibility) relation over the elements of $X$,
+with 
+$\le$ being typically referred to as a \emph{preference relation on $X$}
+and $x\le x'$ to be read as saying that 
+\emph{$x$ is at least as good (or important, or plausible) as $x'$ with respect to $\le$}.
+If $\le$ is a preference relation on $X$
+and $x$ and $x'$ are two alternatives in $X$, then 
+\emph{$x$ is strictly better than $x'$ with respect to $\le$},
+written $x<x'$, if $x\le x'$ and $x'\not\le x$;
+\emph{$x$ and $x'$ are indifferent with respect to $\le$},
+written $x\approx x'$, if $x\approx x'$ and $x'\approx x$;
+finally, \emph{$x$ and $x'$ are incomparable with respect to $\le$}
+if $x\not\le x'$ and $x'\not\le x$.
+Intuitively, if two alternatives $x$ and $x'$ are indifferent with respect 
+to a preference order $\le$, this is like saying that there is 
+nothing to set them apart, and they are equally good.
+If $x$ and $x'$ are incomparable with respect to $\le$, this may be 
+because it is not known how $x$ and $x'$ fare 
+with respect to each other, or because, for whatever reason,
+there is simply no fact of the matter either way.
+If $\le$ is a preference order on $X$,
+then the \emph{transitive closure $\le^+$ of $\le$} is defined, 
+for any alternatives $x$ and $x'$ in $X$, as:
+\begin{align*}
+	x\le^+ x'	&~\text{if there exist}~x_1,\dots,x_k~\text{in}~X~\text{such that}~x \le x_1 \le\dots\le x_k\le x'.
+\end{align*}
+Clearly, if $x\le x'$, then it also holds that $x\le^+ x'$, since we can just
+take $x_1 = x$ and $x_k = x'$.
+Thus, $\le^+$ contains all the comparisons in $\le$, together 
+with the comparisons inferred using an intermediary chain of comparisons.
+
+If $\le$ is a preorder on $X$, 
+the \emph{$\le$-minimal	elements $\min_\le X$} 
+and \emph{$\le$-maximal elements $\max_\le X$} of $X$ 
+are defined, respectively, as:
+\begin{align*}
+	\min_\le X &\defeq\{x\in X\mid\text{there is no}~x'\in X~\text{such that}~x'<x\},\\ 
+	\max_\le X &\defeq\{x\in X\mid\text{there is no}~x'\in X~\text{such that}~x'>x\}.
+\end{align*}
+As per our convention regarding the meaning of $\le$, 
+$x$ being $\le$-minimal in $X$ means that 
+there is no other element in $X$ strictly better than $x$
+and, similarly,
+$x$ being $\le$-maximal in $X$ means that 
+there is no other element in $X$ strictly worse than $x$.
+
+In order to function as a preference over the elements of $X$,
+a binary relation $\le$ is expected to satisfy,
+for any integer $n$ 
+and alternatives $x$, $x_1$, \dots, $x_{n}$ in $X$,
+some selection of the following properties:
+\begin{description}
+	\item[($\oop{1}$)] $x \le x$. \hfill(reflexivity)
+	\item[($\oop{2}$)] If $x_1\le x_2$ and $x_2\le x_3$, then $x_1\le x_3$. \hfill(transitivity)
+	\item[($\oop{3}$)] If $x_1\neq x_2$, 
+		then $x_1 \le x_{2}$ or $x_{2} \le x_{1}$. \hfill(totality)
+	\item[($\oop{\SCON}$)] If $x_1\le\dots\le x_n$, then $x_n\not< x_1$ \hfill(Suzumura consistency)
+	% \item[($\oop{4}$)] If $x_1\le x_2$ and $x_2\le x_{1}$, then $x_{1} = x_{2}$ \hfill(antisymmetry)
+	% \item[($\oop{5}$)] $x\not\le x$. \hfill(irreflexivity)
+\end{description}
+
+If $\le$ is a binary relation on a set $X$ of alternatives, 
+then $\le$ is a \emph{preorder on $X$} if $\le$ satisfies properties $\oop{1-2}$,
+i.e., if $\le$ is reflexive and transitive.
+We write $\PRE_X$ for the set of preorders on $X$.
+If $\le$ is a preorder on $X$, 
+then $\le$ is \emph{total} if it also satisfies property $\oop{3}$,
+i.e., if any two distinct alternatives in $X$ are the subject of some comparison
+in $X$,
+and we write $\TPRE_{X}$ for the set of total preorders on $X$.
+Note that the transitive $\le^+$ closure of any preference order $\le$
+is, by definition, transitive.
+
+
+\begin{figure}\centering
+	\begin{tikzpicture}
+		\node at (0,-0.75){$\le_1$};
+		\node at (0,0)(1){$x_1$};
+		\node at (-0.5,1)(2){$x_2$};
+		\node at (-0.5,2)(3){$x_3$};
+		\node at (0.5,1.5)(4){$x_4$};
+		\node at (0,3)(5){$x_5$};
+		\path[-latex](1)edge(2)(2)edge(3)(3)edge(5)(1)edge(4)(4)edge(5);
+
+		\node at (4,-0.75){$\le_1$};
+		\node at (4,0)(1){$x_1$};
+		\node at (4,1)(2){$x_2,x_4$};
+		\node at (4,2)(4){$x_3$};
+		\node at (4,3)(5){$x_5$};
+		\path[-latex](1)edge(2)(2)edge(4)(4)edge(5);
+	\end{tikzpicture}
+	\caption{
+		A partial preorder $\le_1$ and a total preorder $\le_2$ on the 
+		set $X=\{x_1,x_2,x_3,x_4,x_5\}$ of alternatives.
+		An arrow from $x_i$ to $x_j$ means that $x_i$ is strictly better than 
+		$x_j$, such that better alternatives are depicted lower; if $x_i$ and $x_j$
+		are separated by a comma, that means they are indifferent;
+		and if $x_i$ and $x_j$ are drawn apart, then they are incomparable.
+		In the interest of readability, arrows inferred by transitivity
+		are ommitted: nonetheless, since both $\le_1$ and $\le_2$ are assumed to be preorders,
+		then they must be understood to be transitive, even when the corresponding
+		arrows are absent.
+	}
+	\label{fig:2-preorders}
+\end{figure}
+
+\begin{xmpl}{Preorders}{2-preorders}
+	Consider a set of alternatives $X=\{x_1,x_2,x_3,x_4,x_5\}$ 
+	and twe preorders, $\le_1$ and $\le_2$, on $X$,
+	depicted in Figure \ref{fig:2-preorders}.
+	Of these preorders, $\le_1$ is partial and $\le_2$ is total.
+	We have that $\min_{\le_1}X = \min_{\le_2}X = \{x_1\}$.
+	However, if we consider the restriction of $\le_1$ and $\le_2$
+	to the set $X'=\{x_3,x_4,x_5\}$,
+	then $\min_{\le_1}X' = \{x_3,x_4\}$
+	and 
+	$\min_{\le_2}X' = \{x_4\}$.
+\end{xmpl}
+
+Note that if $\le$ is a total preorder on $X$, 
+then the $\le$-minimal elements in $X$ end up being the overall best elements in $X$,
+i.e., if $x\in\min_\le X$, then $x\le x'$, for any $x'\in X$. 
+As Example \ref{ex:2-preorders} illustrates, 
+this does not hold if $\le$ is a partial preorder.
+
+Preorders are a key ingredient in traditional belief change,
+and we will make use of both partial and total preorders on interpretations
+(i.e., in which the set of alternatives is the universe $\U$)
+in Chapters \ref{ch:3}, \ref{ch:4}, \ref{ch:5} and \ref{ch:6}.
+A different type of preference order will be used in Chapter \ref{ch:7},
+but we defer definitions for those until we need them.
+
+Property $\oop{\SCON}$, 
+where `$\SCON$' stands for \emph{Suzumura consistency} \cite{Suzumura76,Suzumura83,BossertS10},
+says that it is not possible to form a chain of comparisons 
+that starts with $x_1$ and ends with $x_n$, 
+in which every alternative is at least as good as the next one,
+but the last one, $x_n$ ends up being strictly better than the first one, $x_1$.
+A preference order $\le$ on a set of alternatives $X$ is \emph{Suzumura consistent}
+if it satisfies property $\oop{\SCON}$.
+Suzumura consistency
+is a weakening of the transitivity property $\oop{2}$:
+clearly, any relation $\le$ that is transitive 
+is also Suzumura consistent,
+i.e., property $\oop{2}$ implies property $\oop{\SCON}$;
+the converse, however, does not hold.
+
+\begin{xmpl}{Suzumura consistency does not imply transitivity}{2-scon-not-trans}
+	For the set of alternatives $X=\{x_1,x_2,x_3\}$,
+	take a preference order $\le$ such that 
+	$x_1\le x_2$ and $x_2\le x_3$, but $x_1$ and $x_3$ are incomparable.
+	Clearly, $\le$ is Suzumura consistent but not transitive.
+\end{xmpl}
+
+Suzumura consistency is of interest to us 
+because the rational choice literature has 
+identified it as one of the safest fallback options 
+when some preference information is available that 
+can be pieced together into a preference order $\le$, 
+but, for whatever reason, $\le$ is not transitive.
+Since transitivity is, in general, a desirable property of any 
+preference order, it would be good if a transitive order 
+could be constructed on the back of $\le$,
+and the obvious suggestion is to replace $\le$ with its 
+transitive clousre $\le^+$.
+However, there are cases in which the transitive closure would 
+flatten much preference information that we would like to 
+see preserved, and thus lead to an undesirable result.
+To make this more precise, we can bring in the notion of 
+an ordering extension.
+If $X$ is a set of alternatives 
+and $\le$ and $\le'$ are binary relations on $X$,
+then \emph{$\le'$ extends $\le$ on $X$} if, for any alternatives 
+$x_{1}$ and $x_{2}$ in $X$, the following properties hold:
+\begin{description}
+	\item[($i$)] if $x_1\le x_2$, then $x_1\le' x_2$;
+	\item[($ii$)] if $x_1 < x_2$, then $x_{1}<' x_{2}$.
+\end{description}
+Intuitively, $\le'$ extends $\le$ on $X$ if $\le$ contains all the 
+comparisons in $\le$ and, additionally, 
+$\le'$ contains all the strict comparisons of $\le$:
+presumably, the strict comparisons are hard won pieces of information 
+that we would not want to lose.
+Furtermore, $\le'$ is an \emph{ordering extension of $\le$ on $X$}
+if $\le'$ extends $\le$ and $\le'$ satisfies properties $\oop{1-3}$,
+i.e., if $\le'$ is a total preorder on $X$ that extends $\le$.
+
+\begin{figure}
+\centering
+\begin{tikzpicture}
+	\node at (0,-0.75){$\le$};
+	\node at (-0.5,0)(1){$x_1$};
+	\node at (0.5,0)(2){$x_2$};
+	\node at (0,1)(3){$x_3$};
+	\node at (0,2)(4){$x_4$};
+	\path[-latex] (1)edge(2)(2)edge(3)(3)edge(1)(3)edge(4);
+
+	\node at (4,-0.75){$\le^+$};
+	\node at (4,0.5)(1){$x_1,x_2, x_3$};
+	\node at (4,2)(4){$x_4$};
+	\path[-latex] (1)edge(4);
+\end{tikzpicture}	
+\caption{
+	Preference relation $\le$ that does not admit of an 
+	ordering extension: the transitive closure $\le^+$ of $\le$
+	does not preserve the strict comparisons of $\le$.
+}
+\label{fig:2-sc}
+\end{figure}
+
+\begin{xmpl}{Ordinal extensions}{2-sc}
+	Note, first, that $\le_2$ in Example \ref{ex:2-preorders} extends $\le_1$
+	and, what is more, $\le_2$ is an ordering extension of $\le_1$,
+	since it preserves all the strict comparisons of $\le_1$.
+
+	Consider, now, a set of alternatives $X=\{x_1,x_2,x_3,x_4\}$
+	and the preference relation $\le$ on $X$ depicted 
+	on the left in Figure \ref{fig:2-sc},
+	where $x_1<x_2<x_3<x_1$, 
+	$x_2\not<x_1$, $x_3\not< x_2$, $x_1\not< x_3$, and
+	$x_i<x_4$, for $i\in\{1,2,3\}$.
+	Note that $\le$ is not transitive, and is thus problematic.
+	However, the transitive closure $\le^+$ of $\le$,
+	depicted on the right in Figure \ref{fig:2-sc},
+	is arguably also problematic, as it flattens the 
+	cycle between $x_1$, $x_2$ and $x_3$ and does not preserve
+	the strict comparisons in $\le$.
+	The transitive closure $\le^+$ of $\le$, then,
+	is not an ordering extension of $\le$.
+	In fact, it is easy to see that $\le$ does not admit an 
+	ordering extension.
+	Incidentally, $\le$ is not Suzumura consistent either.
+\end{xmpl}
+
+The primary question about ordering extensions concerns their existence:
+ideally, we would like the preference relation $\le$ we are working with
+to be reflexive and transitive, i.e., a preorder, at the least.
+But there are situations, and we will encounter
+them in Chapters \ref{ch:6},
+where these properties cannot be guaranteed,
+and a much weaker relation has to be contended 
+with. The only hope, in this situation,
+is to massage $\le$ into a more manageable format:
+if $\le$ can be extended, in a meaningful way, to a total preorder,
+then it can still fulfil its assigned role 
+as the basis for a decision procedure.
+We would like to know, then, exactly how weak
+$\le$ can be such that it can still guide
+a rational decision maker in its choices.
+The answer turns out to hinge on Suzumura consistency.
+Indeed, ensuring that a preference relation $\le$ is Suzumura consistent 
+turns out to both a sufficient and a necessary condition 
+for the possibility of extending
+the relation to a total preorder.
+
+\begin{thm}{\cite{Suzumura76}}{2-suzumura-consistency}
+	If $X$ is a (potentially infinite) set of alternatives
+	and	$\le$ is a binary relation on $X$,
+	then there exists an ordering extension $\le'$ of $\le$ on $X$
+	if and only if $\le$ is Suzumura consistent.
+\end{thm}
+
+Theorem \ref{thm:2-suzumura-consistency} extends an earlier result 
+that provided only a sufficient condition for the existence 
+of an ordering extension
+\cite{Szpilrajn30}, 
+and applies to both finite and infinite sets of alternatives,
+though in this work we will mainly be concerned 
+with finite sets of alternatives.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+\section{Distances and aggregation functions}\label{sec:2-distances}
+The primary devices for generating preorders (either total or partial) on interpretations 
+we make recourse to in this work are a \emph{dissimilarity function $\dd$ between interpretations},
+used to quantify the disagreement between two outcomes,
+and an \emph{aggregation function $\agg$},
+used to boil down vectors $(x_i)_{1\le i\le n}$ of dissimilarity measures to forms
+that can be meaningfully compared to each other.
+
+\subsubsection{Distances}
+Formally, a dissimilarity function $\dd$ between interpretations is 
+a function $\dd\colon\U\times\U\rightarrow\mathbb{R}_{\geq 0}$
+expected to satisfy, for any interpretations $w$, $w_1$, $w_2$ and $w_3$,
+some subset of the following properties:
+
+\begin{description}[leftmargin=3em]
+	\item[($\ood{1}$)] $\dd(w,w)=0$. \hfill(identity of indiscernibles)
+	\item[($\ood{2}$)] If $w_1\neq w_2$, then $\dd(w_1,w_2)>0$. \hfill(non-negativity)
+	\item[($\ood{3}$)] $\dd(w_1,w_2) = \dd(w_2,w_1)$. \hfill(symmetry)
+	\item[($\ood{4}$)] $\dd(w_1,w_3) \leq \dd(w_1,w_2) + \dd(w_2,w_3)$. \hfill(triangle inequality)
+\end{description}
+
+There is some variation within the literature with respect to what is called how,
+but in the spirit of standard references \cite{DezaD16}
+we will say that a dissimilarity function $\dd$
+is a \emph{quasi-distance} if it satisfies properties $\ood{1-2}$,
+a \emph{distance} if it satisfies properties $\ood{1-3}$
+and a \emph{metric} if it satisfies properties $\ood{1-4}$.
+In general, we will require a dissimilarity measure $\dd$ to satisfy at least properties $\ood{1-2}$:
+for revision, update and enforcement a quasi-distance will be enough,
+whereas for merging we will require $\dd$ to be a distance.
+Intuitively, $\dd(w_1,w_2)$ is supposed to measure how different $w_2$ is from $w_1$,
+which, in turn, becomes a proxy for how likely (or plausible, or desirable) 
+$w_2$ is from the point of view of $w_1$.
+Consequently, smaller dissimilarity translates, straightforwardly enough, into a higher degree of similarity
+and, implicitly, into a higher degree of likelihood (or plausibility, or desirability)
+of $w_2$ relative to $w_1$.
+
+Popular choices of distances between interpretations are the \emph{Hamming distance $\dd_\hamming$}
+and the \emph{drastic distance $\dd_\drastic$}, defined, for any interpretations $w_1$ and $w_2$, as:
+\begin{center}
+	\begin{tabular}{cc}
+		$\dd_\hamming(w_1,w_2)=|w_1\setminus w_2|\cup|w_2\setminus w_1|$,~~~~~~ &
+		$
+		\dd_\drastic(w_1,w_2)=
+		\begin{cases}
+			0,~\text{if}~w_1=w_2,\\
+			1,~\text{otherwise}.
+		\end{cases}
+		$
+	\end{tabular}
+\end{center}
+The Hamming distance $\dd_\hamming$ counts the number of atoms that $w_1$ and $w_2$ differ on,
+while the drastic distance is much coarser, keeping track only of whether $w_1$ and $w_2$ are different or not.
+Both the Hamming and the drastic distances satisfy all properties $\ood{1-4}$, so technically they are metrics,
+though for our purposes we will rarely make use of all these properties.
+
+\begin{xmpl}{Hamming and drastic distances}{2-distances}
+	For the intepretations $ab$ and $ac$, we have that $\dd_{\hamming}(ab,ac)=2$ and $\dd_{\drastic}(ab,ac)=1$.
+\end{xmpl}
+
+\subsubsection{Aggregation functions}
+We will need a way of talking about distances not just between individual interpretations,
+but also between formulas, or sets of interpretations, and interpretations,
+and this will involve the use of an 
+\emph{aggregation function $\agg$},
+which for our purposes 
+is a function $\agg\colon\mathbb{R}^n\rightarrow\mathbb{R}^m$ that,
+for integers $m$ and $n$,
+maps $n$-tuples $\vec{x} = (x_i)_{1\le i\le n}$ of real numbers 
+to $m$-tuples $(x'_i)_{1\le i\le m}$ of real numbers.
+This definition is a bit of an overkill, as we will only make use of the cases 
+when $m=1$ and $m=n$.
+In the case when $m=1$, the aggregated value $\agg\vec{x}$ 
+is a vector containing only one value,
+in which case we write simply $x$ instead of $(x)$.
+
+What this general definition allows us to do is to use
+one single method for comparing the various types of aggregated values
+we make use of.
+This method relies on
+the \emph{the lexicographic order $\le_{\lex}$ on $\mathbb{R}^{n}$}, 
+defined for any integer $n$ and $n$-tuples 
+$\vec{x} = (x_i)_{1\le i\le n}$ and $\vec{y} = (y_i)_{1\le i\le n}$ in $\mathbb{R}^{n}$,
+as follows:
+\begin{align*}
+	\vec{x}\le_{\lex} \vec{y}~&\text{if}~x_1\le y_1,~\text{or}\\
+													  &\text{if}~x_1 = y_1~\text{and}~x_2\le y_2,~\text{or}\\
+													  &\dots\\
+													  &\text{if}~x_1 = y_1,~\dots~,x_{n-1} = y_{n-1}~\text{and}~x_n\le y_n.
+\end{align*}
+Note that when $n=1$, i.e., the aggregated values of $\agg\vec{x}$ and $\agg\vec{y}$
+are $\agg\vec{x}=x_1$ and $\agg\vec{y}=y_1$,
+for some real numbers $x_1$ and $y_1$,
+then comparing $\agg\vec{x}$ and $\agg\vec{y}$ 
+according to $\le_\lex$ reduces to comparing $x_1$ and $y_1$, 
+i.e., $\agg\vec{x}\le_\lex\agg\vec{y}$ if $x_1\le y_1$.
+In this case, we simply write that $\agg\vec{x}\le\agg\vec{y}$ 
+instead of $\agg\vec{x}\le_{\lex}\agg\vec{y}$.
+
+The concrete aggregation functions of immediate interest are the
+$\min$, $\max$, $\leximax$, $\leximin$ and $\ssum$ aggregation functions,
+defined, for any $n$-tuple $(x_i)_{1\le i \le n}$ and 
+permutation $\perm$ of $\{1,\dots, n\}$, as follows:
+\begin{align*}
+	\min(x_i)_{1\le i \le n} &= x_i,~\text{where}~x_i\le x_j,~\text{for any}~x_j~\text{in}~\vec{x},\\
+	\max(x_i)_{1\le i \le n} &= x_i,~\text{where}~x_i\ge x_j,~\text{for any}~x_j~\text{in}~\vec{x},\\
+	\leximax(x_i)_{1\le i \le n} &= (x_{\perm(i)})_{1\le i \le n},~\text{where}~x_{\perm(1)}\ge\dots\ge x_{\perm(n)},\\
+	\leximin(x_i)_{1\le i \le n} &= (x_{\perm(i)})_{1\le i \le n},~\text{where}~x_{\perm(1)}\le\dots\le x_{\perm(n)},\\
+	\ssum(x_i)_{1\le i \le n} &= x_1+\dots + x_n.
+\end{align*}
+Intuitively, the $\min$, $\max$, $\leximax$, $\leximin$ and $\ssum$ aggregation functions
+return, respectively,
+the minimal value in $(x_i)_{1\le i \le n}$,
+the maximal value in $(x_i)_{1\le i \le n}$,
+$(x_i)_{1\le i \le n}$ ordered in descending order,
+$(x_i)_{1\le i \le n}$ ordered in ascending order
+and the sum of the values in $(x_i)_{1\le i \le n}$.
+
+\begin{xmpl}{Aggregation functions}{2-agg-fcts}
+	If $\vec{x}=(1,0,2)$ and $\vec{y}=(1,1,1)$,
+	we have that
+	$\min(\vec{x})=0$,
+	$\max(\vec{x})=2$,
+	$\leximax(\vec{x})=(2,1,0)$,
+	$\leximin(\vec{y})=(0,1,2)$
+	and 
+	$\ssum(\vec{x})=3$.
+	Thus, it holds that 
+	$\min(\vec{x})<\min(\vec{y})$,
+	$\max(\vec{y})<\max(\vec{y})$,
+	$\leximax(\vec{y})<_\lex\leximax(\vec{x})$
+	$\leximin(\vec{x})<_\lex\leximin(\vec{y})$
+	and 
+	$\ssum(\vec{x})=\ssum(\vec{y})$.
+\end{xmpl}
+
+% Note that when all the values in a vector $(x_i)_{1\le i\le n}$
+% are either $0$ or $1$, then 
+
+The $\min$ aggregation function is a 
+ubiquitous presence in belief change, and we will
+make use of it in all subsequent chapters. 
+The other aggregation functions will show up
+in Chapter \ref{ch:4}, alongside two other 
+aggregation functions whose definition is deferred 
+until needed.
+Functions $\leximax$, $\leximin$ and $\ssum$ 
+are also used in merging, and will show up 
+in Chapters \ref{ch:3} and \ref{ch:5}.
+In the context of merging, 
+it is usually useful that the aggregation functions satisfies
+a number of desirable properties.
+Before we spell them out, we mention that $\vec{0}$ is the tuple whose entries are 
+uniformly $0$, i.e., $\vec{0} = (0,\dots,0)$.
+The properties we are interested in are,
+for any $x_1$, \dots, $x_n$ and $x'_n$ in $\mathbb{R}$,
+as follows:
+
+\begin{description}
+	\item[($\ooa{1}$)] $\agg(x_1) = x_1$. \hfill(identity)
+	\item[($\ooa{2}$)] $\agg(x_1,\dots,x_m) = \vec{0}$ if and only if $x_i = 0$, for all $1\le i\le m$.\hfill(minimality)
+	\item[($\ooa{3}$)] If $x_i\le x'_i$, 
+		then $\agg(x_1,\dots,x_i,\dots,x_m)\le_{\lex}\agg(x_1,\dots,x'_i,\dots,x_m)$.\hfill(monotonicity) 
+\end{description}
+
+It is straightforward to see that the $\leximax$, $\leximin$ and $\ssum$ aggregation 
+functions all satisfy properties $\ooa{1-3}$.
+
+
+
+\subsubsection{Putting dissimilarity and aggregation functions together}
+The main thing we want to do with dissimilarity and aggregation functions 
+is to measure the dissimilarity between a formula $\phi$ and an interpretation $w$.
+The idea is to define this measure as the 
+aggregate value of the dissimilarity between each model of $\phi$ and $w$.
+For the following definitions we will assume that $\dd$ is a quasi-distance function,
+i.e., that it satisfies at least properties $\ood{1-2}$.
+
+If $\dd$ is a quasi-distance function between interpretations, 
+$w$ is an interpretation,
+$\phi$ is a consistent propositional formula, 
+and $\agg$ is an aggregation function, 
+then the \emph{$(\dd,\:\agg)$-induced distance $\dd^\agg(\phi,w)$ from $\phi$ to $w$} is defined as:
+$$
+	\dd^\agg(\phi,w)=\agg(\dd(v,w))_{v\in[\phi]}.
+$$
+If $\phi$ is inconsistent, i.e., $[\phi]=\emptyset$, then we establish, by convention,
+that $\dd(\phi,w)=0$, for any interpretation $w$.
+Intuitively, the $(\dd,\:\agg)$-induced distance from $\phi$ to $w$ 
+puts a number on how close $w$ is to $\phi$.
+This number is obtained by aggregating the distances 
+between each model of $\phi$ and $w$
+using the quasi-distance function $\dd$
+and the aggregation function $\agg$.
+This will allow us to compare intepretations with respect to each other,
+relative to a formula $\phi$, when needed.
+
+\begin{table}\centering
+	\begin{tabular}{cccccccc}
+		\toprule
+		& $a$ & $ac$ & $\dd^{\min}_{\hamming}(\phi,\bullet)$ & $\dd^{\max}_{\hamming}(\phi,\bullet)$ & $\dd^{\leximax}_{\hamming}(\phi,\bullet)$ &
+		$\dd^{\leximin}_{\hamming}(\phi,\bullet)$ & $\dd^{\ssum}_{\hamming}(\phi,\bullet)$\\
+		\midrule
+		$bc$ & $3$ & $2$ & $2$ & $3$ & $(3,2)$ & $(2,3)$ & $5$\\
+		\bottomrule
+	\end{tabular}
+	\caption{
+		Hamming distances from each model of $\phi$ to $bc$,
+		together with the aggregated distance $\dd^{\agg}_{\hamming}(\phi,bc)$,
+		for the aggregation functions introduced so far.
+	}
+	\label{tab:2-aggregation}
+\end{table}
+
+\begin{xmpl}{Keeping up with the humans}{2-hamming-drastic-distances}
+	The scenario in Example \ref{ex:1-update-motivation} can be modeled
+	using propositional variables to represent 
+	the indicators my smarthome keeps track of:
+	whether the temperature inside the house is above $15\si{\degree}$ C ($a$),
+	whether the Wi-Fi is on after $21{:}00$ ($b$),
+	and whether my friend is online after $21{:}00$ ($c$).
+	Thus, the set of atoms is $\Atoms=\{a,b,c\}$.
+	My smarthome is set up to make sure that $a$ is true and that $b$ is not,
+	which we can represent as the propositional formula $\phi=a\land\lnot b$,
+	with $[\phi]=\{a,ac\}$. Consider, now, the interpretation $bc$.
+	We have that 
+	$\dd_\hamming(a,bc) = 3$, since $a$ and $bc$ differ with respect to three atoms,
+	whereas $\dd_\drastic(a,bc)=1$, since $a$ and $bc$ are different.
+	The vector of Hamming distances from $\phi$ to $bc$ is
+	$(\dd_\hamming(v,bc))_{v\in[\phi]}=(\dd_{\hamming}(a,bc),\dd_{\hamming}(ac,bc)) = (3,2)$.
+	Thus, the distances from $\phi$ to $bc$, using the aggregation functions 
+	introduced so far, are as follows:
+	$\dd_\hamming^\min(\phi,bc) = 2$,
+	$\dd_\hamming^\max(\phi,bc) = 3$,
+	$\dd_\hamming^\leximax(\phi,bc) = (3,2)$,
+	$\dd_\hamming^\leximin(\phi,bc) = (2,3)$
+	and
+	$\dd_\hamming^\ssum(\phi,bc) = 5$.
+	The distances are also depicted in Table \ref{tab:2-aggregation}.
+	% If we consider now the interpretation $ab$,
+	% we have that 
+	% $(\dd_\hamming(a,ab),\dd_\hamming(ac,ab))=(1,2)$,
+	% with 
+	% $\dd_\hamming^\max(\phi,ab) = 2$,
+	% $\dd_\hamming^\min(\phi,ab) = 1$,
+	% $\dd_\hamming^\leximin(\phi,ab) = (1,2)$,
+	% $\dd_\hamming^\leximax(\phi,ab) = (2,1)$
+	% and
+	% $\dd_\hamming^\ssum(\phi,ab) = 3$.
+	% Consequently, it holds that
+	% $ab<_\phi^{\hamming,\agg} bc$,
+	% for every aggregation function $\agg\in\{\min,\max,\leximin,\leximax,\ssum\}$.
+\end{xmpl}
+
+We will use $(\dd,\:\agg)$-induced distances virtually throughout the entire thesis,
+whenever in need of a constructive way of ranking outcomes relative to a particular formula $\phi$.
+In Section \ref{sec:3-merging} we will go even further and define the distance 
+between a profile $\P=(\phi_i)_{1\le i \le n}$ and an interpretation $w$:
+aggregation functions will make another appearance there.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+\section{Rational choice, individual and social}\label{sec:2-choice-functions}
+Rational choice theory is a vast topic, and our purpose 
+is not to do it full justice here, beyond mentioning 
+the basic idea at its core. This idea is that 
+decision-makers have coherent preferences and 
+choose the best alternatives from the ones available.
+The theoretical part that is of immediate relevance to us
+concerns the axioms guiding rational choice functions
+and the way in which they tie in with preferences.
+We will look at the single-agent and multi-agent cases
+separately.
+
+For the purposes of this section, we will 
+assume a finite set $X$ of alternatives. 
+The set $2^{X}$ is the set of
+subsets of $X$, and, for an integer $k$,
+$2_k^{X}$ is the set of subsets of $X$ of size $k$.
+
+\subsubsection{Individual choice}
+If $X$ is a set of alternatives,
+a \emph{choice function $\cf$} is a function 
+$\cf\colon 2^X\rightarrow 2^X$ 
+that takes as input a subset $M$ of $X$,
+called a \emph{choice set}, or \emph{menu},
+and returns a subset $\cf(M)$ of $X$,
+called the \emph{chosen alternatives}.
+Intuitively, the choice function $\cf$ models 
+the behavior of an agent confronted with a range 
+of alternatives, from which some are chosen.
+The agent can choose whatever it wants from the choice set,
+as long as it does so in a way that respects some basic 
+standards of rationality.
+Traditionally, a rational choice function $\cf$ is expected to satisfy,
+for any choice sets $M$, $M_1$ and $M_2$,
+the following properties:
+\begin{description}
+	\item[($\ooch{1}$)] $\cf(M)\subseteq M$.
+	\item[($\ooch{2}$)] If $M\neq\emptyset$, then $\cf(M)\neq\emptyset$.
+	\item[($\ooch{3}$)] If $M_2\subseteq M_1$, then $\cf(M_1)\cap M_2\subseteq \cf(M_2)$.
+	\item[($\ooch{4}$)] If $M_2\subseteq M_1$ and $x_1,x_2\in \cf(M_2)$, 
+		then $x_1\in \cf(M_1)$ if and only if $x_2\in \cf(M_1)$.
+\end{description}
+
+Property $\ooch{1}$ says that the elements chosen from a choice set $M$
+should be, as a matter of fact, elements of $M$, and is intended to be 
+as uncontroversial as it sounds.
+Property $\ooch{2}$ says that if the choice set $M$ is non-empty, 
+i.e., there is something to choose from,
+then the choice $\cf(M)$ is non-empty,
+i.e., something is chosen.
+Property $\ooch{3}$, sometimes called \emph{property $\alpha$} \cite{Sen69,Sen70},
+says that if $M_2\subseteq M_1$, 
+then any elements chosen from $M_1$ that also happen to be in $M_2$
+are also chosen in $M_2$.
+Intuitively, the best alternatives in the larger set $M_{1}$ are also the best in 
+the smaller set $M_{2}$,
+or, to adapt an example of Amartya Sen himself \cite{Sen70,Sen17}:
+the most subscribed to Youtubers in the world ($M_1$) that happen 
+to be located in Europe ($M_2$)
+must also be among the most subscribed to Youtubers in Europe.
+Property $\ooch{4}$, sometimes called \emph{property $\beta$} \cite{Sen69,Sen70},
+says that if $M_{2} \subseteq M_{1}$, then
+if there are alternatives chosen in $M_2$ that are also chosen in $M_{1}$,
+then any alternatives chosen in $M_{2}$ are also chosen in $M_{1}$.
+Intuitively, if some of the best alternatives in the smaller set $M_{2}$ 
+also happen to be the best alternatives in the larger set $M_{1}$,
+then the best alternatives in $M_{2}$ are the among the best alternatives
+in $M_{1}$,
+or, using the Youtuber example:
+if $x_1$ and $x_2$ are the Youtubers in Europe ($M_1$) with the most subscribers 
+(which implies that $x_1$ and $x_2$ have an equal number of subscribers), 
+then $x_1$ is among the most subscried to Youtubers in the world ($M_2$)
+if and only if $x_2$ is as well. 
+
+\begin{xmpl}{Choosing wisely}{2-choice-props}
+	Consider the choice sets $M_1=\{x_1,x_2,x_3\}$ and $M_2=\{x_1,x_2\}$,
+	and an agent whose choice function $\cf$ is such that 
+	$\cf(M_1)=\{x_1\}$ and $\cf(M_2)=\{x_2\}$.
+	Note that $M_2\subseteq M_1$ but $\cf(M_1)\cap M_2=\{x_1\}$ and $\cf(M_2)=\{x_2\}$,
+	thereby contradicting property $\ooch{3}$.
+	The agent is behaving strangely:
+	when the menu consists of $x_1$, $x_2$ and $x_3$ it chooses $x_1$,
+	signaling that it thinks $x_1$ is strictly better than $x_2$ and $x_2$,
+	whereas when the menu is only $x_1$ and $x_2$, it chooses $x_2$,
+	signaling that it thinks $x_2$ is better than $x_1$.
+
+	Consider, now, a different agent, whose choice function $\cf'$
+	is such that $\cf'(M_1)=\{x_1\}$ and $\cf'(M_2)=\{x_1,x_2\}$.
+	Property $\ooch{3}$ is satisfied, but property $\ooch{4}$ is not, 
+	since $x_2\notin\cf'(M_1)$.
+	This agent is also behaving strangely:
+	when choosing among the elements of $M_2$ it signals that $x_1$ and $x_2$
+	are equally good, but when choosing among the elements of $M_1$
+	it signals that $x_1$ is strictly better than $x_2$.
+\end{xmpl}
+
+We also mention the following property, 
+expected to hold for any choice sets $M_1$ and $M_{2}$:
+
+\begin{description}
+	\item[($\ooch{5}$)] If $M_2\subseteq M_1$ and $\cf(M_1)\cap M_2\neq\emptyset$, 
+		then $\cf(M_2)\subseteq \cf(M_1)\cap M_2$.
+\end{description}
+
+Property $\ooch{5}$ says that the elements chosen from the smaller set $M_2$ 
+are also chosen from the larger set $M_1$,
+or, using the Youtubers example:
+if some of the most subscribed to Youtubers in the world ($M_1$) 
+are located in Europe ($M_2$),
+then the most subscribed to Youtubers in Europe must also be among 
+the most subscribed to Youtubers in the world.
+if it happens that some of the chosen elements in $M_1$ are also in $M_2$. 
+As such, property $\ooch{5}$ is similar to $\ooch{4}$, but it is stronger than it:
+$\ooch{5}$ implies $\ooch{4}$, though it is not implied by it. 
+However, properties $\ooch{3}$ and $\ooch{4}$ together imply $\ooch{5}$.
+We mention property $\ooch{5}$ mainly because of the symmetry it exhibits
+with $\ooch{3}$; it will prove more relevant in Chapter \ref{ch:3}.
+
+Example \ref{ex:2-choice-props} already rationalizes a choosing agent's
+behavior in terms of alternatives that are good, or best in a certain 
+range: this suggests that there exists a dimension along which the 
+agent ranks alternatives, and uses this ranking to guide its choices.
+This intuition is formalized through the instrument of a preference 
+order $\le$ on $X$, as described in Section \ref{sec:2-preferences},
+and expected to enjoy a two-way relation with a choice function $\cf$.
+
+Firstly, a preference relation is used by the agent 
+to determine its choices.
+Thus, given a preference order $\le$ on $X$, the 
+\emph{$\le$-induced choice function $\cf^{\le}$ on $X$}
+is defined, for any choice set $M$, as:
+\begin{displaymath}
+	\cf^{\le}(M) \defeq \min_{\le}M.
+\end{displaymath}
+Intuitively, given a menu $M$ of alternatives in $X$,
+the choice over $M$ consists of the best elements of $M$
+according to the preference relation $\le$ on $X$.
+
+Conversely, the agent's observed choice behavior 
+can be used to construct, or reveal, the agent's preference relation on $X$.
+Thus, given a choice function $\cf$ on $X$,
+the \emph{$\cf$-revealed preference relation $\le^\cf$ on $X$} is defined, 
+for any $x_1,x_2\in X$, as:
+\begin{displaymath}
+	x_1\le^\cf x_2~\text{if}~x_1\in\cf(\{x_1,x_2\}).
+\end{displaymath} 
+Intuitively, $x_1$ is considered at least as good as $x_2$ in $\le^\cf$
+if $x_1$ is chosen when the choice set contains exactly $x_1$ and $x_2$.
+If $\le$ is a preference order on a set $X$ and $\cf$ is a choice function,
+then $\le$ \emph{represents $\cf$} (alternatively, \emph{$\cf$ is represented by $\le$}),
+if, for any choice set $M \subseteq X$, it holds that:
+$$
+	\cf(M) = \min_{\le}M.
+$$
+In this section, we are interested in choice functions that can be 
+represented by preference orders $\le$ that are total preorders. 
+The rationale for this is straightforward:
+the properties of a total preorder, though demanding and perhaps unrealistic,
+describe an agent who has complete information about 
+the alternatives it is faced with, and can unfailingly identify 
+the best alternatives out of any choice set.
+What properties does a choice function need to satisfy 
+in order for it to be represented by a total preorder?
+The answer is provided by properties $\ooch{1-4}$.
+
+\begin{thm}{\cite{Sen70}}{2-choice-repr}
+	If $\cf$ is a choice function on $X$, then
+	$\cf$ satisfies properties $\ooch{1-4}$ if and only if 
+	there exists a total preorder $\le$ on $X$ that represents $\cf$.
+\end{thm}
+
+Intuitively, if $\cf$ is a choice function satisfying properties $\ooch{1-4}$
+then the $\cf$-revealed preference relation $\le^\cf$ is exactly the total preorder
+that satisfies the conditions in Theorem \ref{thm:2-choice-repr}.
+What is more, the $\le^\cf$-induced choice function on $X$ is identical to $\cf$.
+Theorem \ref{thm:2-choice-repr} is similar, in many respects,
+to the representation results for belief change we will encounter in the 
+following chapters.
+
+\subsubsection{Social choice}
+If $N=\{1,\dots,n\}$ is a set of agents and
+$X$ is a set of alternatives,
+a \emph{$\TPRE$-profile $\PP$ on $X$}
+(alternatively, a \emph{preference profile on $X$}), 
+also written as $\PP = (\le_i)_{1\le i\le n}$
+is an $n$-tuple $\PP=(\le_1,\dots,\le_n)$ 
+of total preorders on $X$.
+Each total preorder $\le_i$ in a preference profile $\PP$ 
+is assumed to correspond to an agent $i$ in $N$.
+A \emph{social choice function $\scf$} 
+is a function $\scf\colon\TPRE^n\rightarrow 2^X$,
+taking as input a preference profile $\PP$ on $X$
+and returning a set $\scf(\PP)$ of alternatives in $X$, called
+the \emph{winning alternatives with respect to $\PP$ and $X$}.
+A \emph{social welfare function $\swf$}
+is a function $\swf\colon\TPRE^n\rightarrow \TPRE$,
+taking as input a $\TPRE$-preference profile $\PP$ on $X$
+and returning a total preorder $\swf(\PP)$ on $X$.
+
+The model for a social choice function is a voting rule, 
+i.e., a function that processes preferences submitted by 
+agents and outputs a set of winning candidated.
+The literature on social theory is, of course, rich in 
+concrete proposals of voting rules and of ways to analyze 
+them, and in the interest of brevity we defer to some 
+standard sources for more in-depth material \cite{Zwicker16,BaumeisterR16}.
+Here we only introduce a few key notions that have been tweaked to fit in 
+with the overall tenor of this work and will be referenced later.
+The first notion is the specific solution concept of a \emph{weak Condorcet winner}.
+Thus, if $X$ is a set of alternatives,
+$\PP = (\le_{i})_{1\le i\le n}$ is a preference profile on $X$
+and $x_1$ and $x_2$ are alternatives in $X$, 
+the \emph{support $\supp_{X}(x_1,x_2)$ of $x_1$ over $x_2$ with respect to $\PP$ and $X$} is defined as:
+$$
+	\supp_{X}(x_1,x_2)=\{i\in N\mid x_1\le_{i} x_2\},
+$$
+i.e., the set of agents in $N$ for whom $x_1$ is at least as good as $x_2$.
+Intuitively, we can think of 
+$x_1$ and $x_2$ as matched up in a head to head election based on the preferences expressed in $\PP$,
+and the support of $x_1$ over $x_2$ are the agents in $N$ who see $x_1$ as 
+at least as good as $x_2$.
+If $x^{\ast}$ is an alternative in $X$,
+then $x^{\ast}$ is a \emph{weak Condorcet winner with respect to $\PP$ and $X$} if:
+	$$
+		|\supp_{X}(x^{\ast},x)|\ge |\supp_{X}(x,x^{\ast})|,~\text{for any}~x\in X.
+	$$
+In other words, $x^{\ast}$ is a weak Condorcet winner 
+with respect to $\PP$ and $X$ if $x^{\ast}$ is considered 
+at least as good as any other alternative $x$
+by at least as many agents in $N$ as those that consider 
+$x$ at least as good as $x^{\ast}$.
+Intuitively, an alternative $x^{\ast}$ is a weak Condorcet 
+winner with respect to $\PP$ and $X$
+if $x^{\ast}$ is in $X$ and manages to defeat, 
+or match, every other alternative in $X$ in 
+a head to head election.
+
+The definition of a (weak) Condorcet winner 
+is relativized to a set of alternatives $X$
+to allow for the possibility of varying $X$
+anywhere in between the universal set of alternatives
+and a subset of it. 
+If agents are assumed to have preferences over 
+the set of all possible alternatives,
+then we can restrict those preferences 
+to a smaller set of alternatives and 
+ask for the Condorcet winner relative to 
+the restricted set.
+Clearly, a weak Condorcet winner relative to a set $X$ of alternatives
+stays a weak Condorcet winner relative to a set $X'\subseteq X$ of alternatives.
+The converse, however, is not guaranteed to hold.
+
+\begin{figure}\centering
+	\begin{minipage}{0.45\textwidth}\centering
+		\begin{tabular}{ccccc}
+			\toprule
+			$1$ & $2$ & $3$ & $4$ & $5$\\
+			\midrule
+			$x_1$ & $x_4$ & $x_3$ & $x_2$ &	$x_2$\\
+			$x_2$ & $x_1$ & $x_4$ & $x_3$ &	$x_1$\\ 	
+			$x_3$ & $x_2$ & $x_1$ & $x_4$ &	$x_4$\\ 	
+			$x_4$ & $x_3$ & $x_2$ & $x_1$ &	$x_3$\\\bottomrule 	
+		\end{tabular}
+		\caption*{$\PP=(\le_i)_{1\le i \le 5}$ over $X = \{x_1,x_2,x_3,x_4\}$}
+	\end{minipage}
+	\begin{minipage}{0.45\textwidth}\centering
+		\begin{tabular}{ccccc}
+			\toprule
+			$1$ & $2$ & $3$ & $4$ & $5$\\
+			\midrule
+			$x_1$ &       & $x_3$ & $x_2$ &	$x_2$\\
+			$x_2$ & $x_1$ &       & $x_3$ &	$x_1$\\ 	
+			$x_3$ & $x_2$ & $x_1$ &       &	     \\ 	
+			      & $x_3$ & $x_2$ & $x_1$ &	$x_3$\\
+			\bottomrule 	
+		\end{tabular}
+		\caption*{$\PP$ restricted to $X' = \{x_1,x_2,x_3\}$}
+	\end{minipage}
+	\caption{
+		On the left, the preference profile $\PP=(\le_i)_{1\le i \le 5}$
+		over the set of alternatives $X = \{x_1,x_2,x_3,x_4\}$;
+		on the right, the same preference profile restricted
+		to the set of alternatives $X'=\{x_1,x_2,x_3\}$.
+		Higher, in this context, is better, such that for Doctor $1$
+		alternative $x_1$ is the best, $x_2$ is the second best, and so on.
+		We obtain that $x_1$ is a Condorcet winner with respect to $\PP$ and $X'$,
+		but not with respect to $\PP$ and $X$.
+		}
+	\label{fig:2-condorcet-winner-expansion}
+\end{figure}		
+
+\begin{xmpl}{Doctors in need of agreement}{2-condorcet-winner-expansion}
+	Recall the five doctors in Example \ref{ex:1-choice-motivation}
+	who have to agree on a common treatment for a novel respiratory disease,
+	with the alternatives being a cocktail of drugs $a$ and $b$, $a$ alone, 
+	$b$ alone or neither of these two drugs.
+	If we denote these alternatives by $x_1$, $x_2$, $x_3$ and $x_4$,
+	respectively, then each doctor can be thought of as having a preference 
+	order $\le_i$, for $i\in\{1,2,3,4,5\}$,
+	over the (universal) set of alternatives $X = \{x_1,x_2,x_3,x_4\}$,
+	with these preferences depicted on the left in Figure \ref{fig:2-condorcet-winner-expansion}.
+	Figure \ref{fig:2-condorcet-winner-expansion} also depicts, on the right,
+	the same preferences restricted to the set $X' = \{x_1,x_2,x_3\}$
+	of alternatives and depicted on the right in Figure \ref{fig:2-condorcet-winner-expansion}.
+
+	Note that $x_1$ is the only weak Condorcet winner with respect to $\PP$ and $X'$.
+	Firstly, 
+	it holds that 
+	$\supp_{X'}(x_1,x_2)=\{1,2,3\}$ and 
+	$\supp_{X'}(x_2,x_1)=\{4,5\}$,
+	which means that (strictly) more agents (strictly) prefer $x_1$ to $x_2$.
+	Secondly, 
+	it holds that 
+	$\supp_{X'}(x_1,x_3)=\{1,2,5\}$ and 
+	$\supp_{X'}(x_3,x_1)=\{3,4\}$,
+	which means that (strictly) more agents (strictly) prefer $x_1$ to $x_3$.
+	Thus, $x_1$ conclusively 
+	defeats every other alternative in $X'$ in a head to head election.
+
+	However, alternative $x_1$ ceases to be a weak Condorcet winner
+	with respect to $\PP$ and $X$:
+	$x_1$ still defeats $x_2$ and $x_3$ in a head to head election, 
+	since the computations above are not changed;
+	but $x_1$ is defeated by $x_4$, since 
+	$\supp_{X}(x_1,x_4)=\{1,5\}$ and 
+	$\supp_{X}(x_4,x_1)=\{2,3,4\}$,
+	i.e., more agents strictly prefer $x_4$ to $x_1$. 
+	What is more, since no alternative manages to defeat,
+	or even match, all other alternatives
+	in head to head elections, 
+	there is no weak Condorcet winner with respect to $\PP$ and $X$.
+\end{xmpl}
+
+We will use this relativized notion of a Condorcet winner in Section \ref{sec:5-evenhandedness}.
+
+Since we will be concerned with belief merging operators that meet certain 
+proportionality requirements, 
+traditionally the preserve of multiwinner elections,
+we need a set of tools for thinking about proportionality 
+in the context of social choice functions.
+Proportional representation has been systematically studied in the social choice literature,
+notably in the case of Approval-Based Committee (ABC) elections \cite{FaliszewskiSST17}.
+An ABC election requires the set of alternatives $X$, 
+a desired size of the committee $k$, 
+and a particular type of preference profile.
+
+In an ABC election voters are assumed to partition
+the set of alternatives into two sets: the alternatives they approve of, 
+and the alternatives they do not approve of.
+In the context of the framework introduced here, such a preference
+order can be modeled by a preorder $\le$ that consists of exactly two levels,
+i.e., there are two sets $V$ and $X\setminus V$ such that
+$v_1<v_2$ for any $v_1\in V$ and $v_2\in X\setminus V$
+and $v\approx v'$ if $x,x'\in V$ or $v.v'\in X\setminus V$.
+If a preorder $\le$ on $X$ is of such a type, 
+we call $\le$ an \emph{approval preference order}.
+If an agent $i$ has an approval preference order $\le_i$, 
+then $V_i$ is \emph{agent $i$'s approval ballot}. 
+Since an approval ballot is just a set of alternatives from $X$,
+the set of all approval ballots is $2^{X}$.
+An approval preference order is completely determined by the elements of $V_i$,
+so voters need only report their approval ballots for their preference to be 
+completely specified, and we will base ABC elections on these ballots.
+Thus, an \emph{approval profile $\VV$} is a tuple 
+$\VV=(V_1,\dots,V_n)$, also written as $(V_i)_{1\le i\le n}$,
+of approval ballots, with $(2^X)^n$ being the set of all approval profiles of length $n$.
+
+If $X$ is a finite set of alternative and $n$ and $k$ are integers, 
+an \emph{ABC social choice function $\abc$} is a function 
+$\abc\colon (2^X)^{n}\rightarrow 2_k^X$,
+taking as input an approval profile and returning a set of alternatives,
+also called the \emph{winning committees}, of size $k$.
+The ABC social choice function of immediate interest to us 
+is called \emph{Proportional Approval Voting} \cite{Thiele95}.
+It is based on the \emph{harmonic function $h$}, which is a function 
+$h\colon\mathbb{N}\rightarrow\mathbb{R}$,
+defined as:
+$$
+	h(\ell) = \sum_{i=1}^{\ell}\frac{1}{i}, 
+$$
+with the added convention that $h(0)=0$.
+Given an approval profile $\VV=(V_i)_{1\le i\le n}$
+and a committee $W\subseteq X$ of size $k$, 
+the \emph{$\pav$-score of $W$ with respect to $\VV$} is
+defined as:
+$$
+	\pav(\VV,W)=\sum_{i=1}^n h(|V_i\cap W|),
+$$
+where $h$ is the harmonic function.
+Given two committees $W_1$ and $W_2$ of size $k$,
+the $\pav$-induced preorder on $2_k^{X}$, is defined as:
+$$
+	W_1\ge^{\pav}_{\VV}W_2~\text{if}~\pav(\VV,W_1)\ge\pav(\VV,W_2).
+$$
+The $\pav$ ABC function $\abc^{\pav}$ applied to the approval profile $\VV$, 
+for a desired size $k$ of the committee, is defined as:
+$$
+	\abc^{\pav}_k(\VV)=\max_{\ge^{\pav}_{\VV}}\{W\subseteq X\mid |W|=k\},
+$$
+i.e., it outputs committees of size $k$ that maximize the 
+$\pav$ score with respect to $\VV$.
+
+\begin{table}\centering
+\begin{tabular}{cccccc}
+	\toprule
+	$\pav$      & $x_1x_2x_3x_4$ & $x_1x_2x_3x_4$ & $x_1x_2x_3x_4$ & $y_1y_2y_3y_4$ & $\ssum$\\
+	\midrule
+	$x_1x_2x_3x_4$   &     $h(4)$     &    $h(4)$      &    $h(4)$      &      $h(0)$    &  $6.25$\\
+	$x_1x_2x_3y_1$   &     $h(3)$     &    $h(3)$      &    $h(3)$      &      $h(1)$    &  $\mathbf{6.5}$\\
+	$x_1x_2y_1y_2$   &     $h(2)$     &    $h(2)$      &    $h(2)$      &      $h(2)$    &  $6$\\
+	$x_1y_2y_2y_3$   &     $h(1)$     &    $h(1)$      &    $h(1)$      &      $h(3)$    &  $4.83$\\
+	$y_1y_2y_3y_4$   &     $h(0)$     &    $h(0)$      &    $h(0)$      &      $h(4)$    &  $2.08$\\
+	\dots 			 &		\dots     &     \dots      &    \dots       &       \dots    &  \dots   \\
+	\bottomrule
+\end{tabular}
+\caption{
+$\pav$ scores for a selection of committees of size $4$.
+when the approval profile is $\VV=(V_i)_{\le i\le 4}$.
+an optimal outcome according to the $\abc^\pav$ function 
+is one that maximizes 
+the $\pav$-score with respect to the profile $\VV$.
+}
+\label{tab:2-abc-pav-rule}
+\end{table}
+
+\begin{xmpl}{The $\pav$ rule}{ex:abc-pav-rule}
+	Take a set of candidates $X\cup Y$,
+	where $X=\{x_1,x_2,x_3,x_4\}$ 
+	and 
+	$Y=\{y_1,y_2,y_3,y_4\}$,
+	and an approval profile $\VV=(V_1,V_2,V_3,V_4)$
+	with $V_1=V_2=V_3=\{x_1x_2x_3x_4\}$ and $V_4=\{y_1y_2y_3y_4\}$.
+	Suppose $k=4$, i.e., the task is to choose committees of size $4$.
+	Intuitively, a proportional outcome would consist of three candidates from $X$
+	and one from $Y$, to reflect the fact that supporters $X$ outnumber
+	supporters of $Y$ in the profile $\VV$ by a ratio of $3{:}1$.
+	Indeed, this is exactly the type of outcome the $\pav$ rule will select.
+	Table \ref{tab:2-abc-pav-rule} depicts the $\pav$ scores
+	of a representative sample of possible winning committees.
+	Note that an optimal outcome according to the $\abc^\pav$ function 
+	is one that maximizes 
+	the $\pav$-score with respect to the profile $\VV$.
+	In this case, this corresponds to committees consisting of three 
+	alternatives from $X$ and one from $Y$, i.e.,
+	$\abc_k^\pav(\VV)=\{x_1x_2x_3y_1,x_1x_2x_3y_2,\dots\}$.
+\end{xmpl}
+
+The $\pav$ function is known to satisfy a number of desirable proportionality 
+requirements \cite{AzizBCEFW17}, and will serve as a template 
+for proportional belief merging operators in Section \ref{sec:5-proportionality}.
+

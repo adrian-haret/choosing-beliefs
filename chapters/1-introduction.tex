@@ -1,0 +1,1095 @@
+\chapter{Introduction}\label{ch:1}
+
+The theme of this work is that belief change,
+as it emerged from the seminal contributions of the late $1980$s
+\cite{AlchourronM85,AlchourronGM85,Gardenfors88},
+and rational choice,
+as shaped in the foundries of decision theory a few decades earlier
+\cite{vonNeumannM44,Arrow51,Arrow59,Sen70,Suzumura83},
+have much in common.
+This similarity, we argue, has two aspects to it.
+
+At first blush, there is the simple observation that 
+belief change and rational choice
+can be seen to share a common mathematical framework:
+indeed, a peek at the formal structure
+shows that, beyond the distinct motivation 
+and the different terminology,
+the methodology of one area dovetails nicely 
+with the methodology of the other.
+The standard recipe for approaching 
+a belief change operation is 
+to propose a set of appealing normative properties,
+usually in the form of \emph{logical postulates},
+and, in parallel, to look for constructive ways 
+of satisfying these postulates;
+often this is aided by the illuminating instrument 
+of a representation result,
+which serves as a bridge between the 
+postulates and a broad range of constructive 
+procedures put forward.
+On its side, rational choice proceeds along the same lines:
+there are abstract axioms describing reasonable choice procedures,
+concrete decision mechanisms,
+and characterization results showing how to relate the two.
+Both fields, in short, rely on the axiomatic method to 
+understand the objects of study.
+What is more, some of the main concepts used also 
+bear a striking semblance to each other:
+belief change usually involves agents who rank possible states of 
+the world in terms of their plausibility: 
+an agent changing its mind, we will see, 
+is required to make a judgment over what is more 
+likely to be the case given some information it receives.
+These rankings, then, can be equated 
+with the preferences that decision makers, 
+in rational choice, have over alternatives:
+formally, thinking that an outcome is more plausible than another
+and saying that an alternative is better than another
+are modeled by the same types of relations.
+
+The existence of this common ground, we propose,
+opens up a wellspring of techniques that 
+can be exploited to mutual benefit,
+and the present thesis is devoted to exploring the
+consequences of this particular viewpoint.
+Though belief change is ostensibly not about choice,
+the formal similarity alone warrants the expectation
+that some traffic of ideas would be valuable.
+And, while the results offered here are focused mostly 
+on how rational choice informs belief change,
+some glimpses of how the relationship can be reversed 
+are scattered along the way.
+
+Going further, we suggest that belief change and rational choice
+share not just a mathematical skeleton, but also a common intuition.
+That is to say, it is not just that both areas use postulates and 
+representation results to structure their content:
+but the postulates express the same principles,
+and the representation results are used to characterize
+one single, underlying mechanism.
+
+\subsubsection{Rational choice}
+The mechanism is that of \emph{choice}, 
+and the principles surrounding it are 
+the conditions that, in the theory of decision making,  
+guarantee that choice can be thought of as rational.
+These are the same principles underlying
+the economic view of \emph{homo economicus} 
+as maximizer of utility,
+and that have been used as a 
+starting point for much research in
+the foundations of economic theory.
+
+Choice, here, covers both the individual case,
+i.e., that in which one agent has to choose among a set of alternatives,
+with the prototypical example being that of a 
+decision maker choosing a bundle of goods
+subject to a budget constraint,
+as well as the social case,
+i.e., that in which a collective of agents 
+has to choose among a set of alternatives,
+with the prototypical example being that 
+of a society organizing an election.
+
+\begin{xmpl}{Treating a novel disease}{1-choice-motivation}
+	A doctor, who we will call here Doctor $1$,
+	is on the frontlines of medical assistance 
+	for a newly discovered respiratory disease.
+	The doctor has to choose among four possible 
+	ways to treat patients diagnosed with this disease. 
+	At the moment of the decision there is no clinically 
+	proven treatment for the disease, but $a$ and $b$,
+	two existing drugs, have shown a certain amount of promise.
+	The doctor has to decide between the option of administering 
+	both drugs together, only one, or neither. 
+	After some deliberation, the doctor chooses to administer
+	both $a$ and $b$, only to be told that $b$ is momentarily out of stock.
+	The doctor goes ahead and administers $a$.
+	
+	Later in the week, all five doctors in the infectious disease
+	wing of the hospital meet to decide on a common strategy for how to 
+	treat the disease.
+	Doctor $1$ has the following to say:
+
+	\begin{description}
+		\item[Doctor $1$:] Based on my understanding of this disease, 
+			drug $a$ has the highest chance to work against this disease,
+			slightly higher than $b$ even. 
+			But $a$ and $b$ probably have the largest impact when administered together. 
+			In any case, it seems to beyond doubt that administering either 
+			is preferable to doing nothing.
+	\end{description}
+	But, in general, opinions are all over the place:
+	\begin{description}
+		\item[Doctor $2$:] I am more concerned with the possible harm using untested drugs
+			might have on our patients. 
+			Since there have been no clinical trials on these drugs, 
+			I think there's no good ground to push either of them, 
+			$b$ more so than $a$; adding $a$ might make the combo less potent, 
+			but I would think that the safest bet is to use neither.
+		\item[Doctor $3$:] I'd say that drug $b$ is a good bet, 
+			and using it is probably better overall than leaving it out
+			of the treatment plan.
+			But $a$ is known to cause certain bad side effects
+			if administered in the wrong dosage, 
+			and mixing it in would maybe harm the patient.
+		\item[Doctor $4$:]	Drug $a$ has been shown to be effective for other diseases,
+			so we might give it a shot here as well; 
+			giving $b$ might be better than doing nothing,
+			but I think $a$ and $b$ should definitely not be mixed. 	
+		\item[Doctor $5$:] Drug $a$ sounds good, 
+			and maybe in combination with $b$ it might be 
+			effective, 
+			certainly more effective than doing nothing. 
+			But drug $b$ is already in use for other diseases,
+			and basing therapy just on it might create a shortage
+			of $b$ for those patients.
+			So I am strongly opposed to using $b$ by itself.
+	\end{description}
+	Settling on one course of action will be difficult.
+\end{xmpl}
+
+Example \ref{ex:1-choice-motivation} shows two cases 
+where choices need to be made.
+One is the single-agent case of Doctor $1$ choosing among 
+four different treatment options, 
+then having to adjust the choice to stay within the `budget'
+of what medication is actually on stock.
+The second is a multi-agent case in which a choice 
+about the treatment is made on the basis of input 
+from several doctors: 
+each doctor, presumably, brings with them experience 
+and expertise, and their opinions are to be treated equally. 
+In both cases a decision needs to be made: 
+all these options, what to choose? 
+And, in both cases, the challenge is to come up 
+with a formal model of what it 
+means for a decision to be \emph{good}.  
+
+Most existing work in rational choice can be traced back to
+a model of what makes for a good decision 
+that, in its basic form, says:
+always choose the best alternatives available.
+This is a view that, at first glance, does not seem particularly informative,
+but it carries some important implications.
+First of all: good for whom?
+If the decision concerns only one agent, then ostensibly 
+that agent gets to have the final say:
+when Doctor $1$ in Example \ref{ex:1-choice-motivation} has to choose 
+by themselves, then the choice depends only on their own assessment 
+of what would work best.
+But if the decision concerns a group of agents, 
+then the answer can vary.
+In Example \ref{ex:1-choice-motivation}, 
+it is not obvious what the collectively best option is:
+perhaps the majority should prevail;
+maybe priority should be given, instead, 
+to the worst-off agents;
+or perhaps the spoils should be distributed proportionally,
+in accordance with the composition of the group.
+There is no pretense that any of these is the 
+undisputed right answer: 
+social choice is committed to studying all these options,
+and we will see that they are equally relevant for multi-agent
+belief change.
+
+Second, what does it even mean for something to be good?
+To avoid the matter becoming too perplexing,
+a formal analysis might only consider an ordinal ranking 
+of alternatives: how good alternatives are, not in absolute terms,
+but only relative to each other.
+This makes it possible to identify the best alternatives,
+without having to go into metaphysical details about 
+what makes something good, or desirable. 
+But, though easier to model, this assumption still 
+requires an impressive feat: 
+the agent (or collective of agents) must 
+be able to pick out the best alternatives 
+out of a given lineup,
+i.e., it (or they) must possess the ability 
+to rank alternatives according to their quality,
+and to do so in a way that is coherent across 
+the set of alternatives.
+This is where preferences come in:
+in Example \ref{ex:1-choice-motivation},
+each doctor has their own assessment of how the
+various treatment options stack up against each other.
+These assessments differ in their motivations: 
+Doctor $1$ evaluates the treatments in terms 
+of which has the highest chance of being effective,
+whereas Doctor $2$ evaluates them in terms of
+their likelihood to cause harm,
+while the other doctors land somewhere in between
+and use a variety of other criteria.
+This use of different scales means that judging such 
+preferences in absolute terms would be difficult,
+if not, as has been claimed elsewhere, meaningless \cite{Arrow51}.
+But through the intermediary of an ordinal ranking, 
+the preferences can be put side by side and aggregated.
+
+How can we rationalize that an agent prefers 
+an alternative $x_1$ over an alternative $x_2$?
+Does it make sense to say that a society, 
+as a whole, prefers $x_1$ over $x_2$?
+Such questions lie at the heart of rational agency 
+and democratic decision making.
+Showing that an ordinal ranking of alternatives, 
+which we will call here a \emph{preference order},
+exists and has desirable properties
+turns out to be a far from trivial matter,
+and significant contributions in rational choice have focused on 
+the conditions under which it can be settled:
+this includes results in the theory of individual choice on 
+the constraints that have to be imposed on choice behavior
+to guarantee conformance with a desirable preference order \cite{Sen69,Sen70},
+or Arrow's celebrated impossibility theorem in social choice
+showing that under mild assumptions such a preference order does not even exist 
+\cite{Arrow51}.
+
+The insight that emerges from these results, 
+and that we will exploit in the present work,
+is that, in a minimally rational agent, 
+there is a tight connection between preference and choice.
+This connection runs in two directions.
+On the one hand, preference can be taken to determine choice, 
+by making clear what the best alternatives are:
+if an agent believes alternative $x_1$ is better than $x_2$, then, 
+faced with a choice between the two, and all thinge being equal,
+the agent will choose $x_1$.
+On the other hand, preference can be inferred from choice, 
+by taking choice behavior to be indicative of what the best 
+alternatives are considered to be:
+if an agent chooses $x_1$ over $x_2$ when both alternatives are on the table,
+then that must be because the agent thinks $x_1$ is better than $x_2$.
+The key question is whether the two directions 
+can be shown to cohere with one another:
+if the agent chooses $x_1$ over $x_2$ once, $x_2$ over $x_3$ later, 
+and $x_1$ over $x_3$ at yet some other time, 
+then all is well; this behavior is consistent with our inference 
+that the agent thinks $x_1$ is better than $x_2$,
+$x_2$ is better than $x_3$, and hence $x_1$ is better than $x_3$. 
+But if the agent chooses $x_3$ over $x_1$, then something has gone wrong: 
+this indicates that there is a cycle in the agent's preference,
+and our intuitions about what constitutes rational behavior have been violated. 
+
+In this work we want to focus mainly on what 
+has to happen for things to go smoothly,
+i.e., the conditions under which there exists 
+a preference order driving choice behavior, 
+this order is transitive (or, at the very least, avoids cycles),
+and satisfies whatever other properties we find appealing.
+A more detailed exposition of these properties,
+together with the constraints on the choice function needed 
+to make them happen,
+is offered in Section \ref{sec:2-choice-functions}.
+
+The mark of a rational agent, in this setting, is not 
+so much in what, concretely, it prefers,
+but that, whatever the agent's preferences are, 
+choices made on their basis are coherent and successful.
+Formally, we know we are on the right track when the setup created
+allows us to derive a \emph{representation theorem},
+i.e., a result saying that choice under whatever axioms we have come up with 
+is equivalent to having an intended type of preference order over alternatives 
+and selecting the best alternatives on offer.
+Ultimately, a representation theorem validates the view according to which
+rational choice is equivalent to optimizing over the space of alternatives,
+and in Section \ref{sec:2-choice-functions} we will get a glimpse of 
+some significant representation results for choice functions.
+
+But what does all this have to do with belief change?
+
+\subsubsection{Belief change}
+Belief change, on a first approximation, is concerned with epistemic states, 
+i.e., the information that agents hold in their `heads' at any given moment,
+and their dynamics, i.e., the ways in which epistemic states are supposed to change
+in light of new information.
+The main types of belief change we will focus on in this work are the established operations of
+revision \cite{KatsunoM92}, 
+update \cite{KatsunoM91},
+and merging \cite{KoniecznyP02,KoniecznyP11},
+as well as the relatively new operation of 
+enforcement \cite{HaretWW18}.
+Revision, update and enforcement study the dynamics of 
+a single agent's epistemic state,
+whereas merging studies the dynamics of the epistemic states 
+of groups of agents.
+All these operations are instances of a formal framework that
+has been in place since the seminal first contributions to the field
+\cite{AlchourronGM85,AlchourronM85,GardenforsM88,Gardenfors88},
+but whose main ideas certainly go back even further 
+\cite{Harper76,Levi80}.
+The main tools of this framework are a language, usually propositional logic,
+in which beliefs are written down;
+a set of postulates that capture our intuitions about 
+how a rational belief change operator should behave;
+and a set of concrete procedures that perform the operations,
+validated by representation results.
+
+Nominally, all these operations study the dynamics of beliefs:
+it is customary to speak of \emph{belief} revision, 
+\emph{belief} update, and so on,
+and many motivating examples are constructed 
+around agents that find out they are wrong, or that 
+the world has changed. 
+However, as a note for what is to come,
+we believe it is important not to read too much into this term:
+indeed, the barebones AGM model of revision 
+usually taken as a reference point for work in belief change \cite{AlchourronGM85},
+is flexible enough to account for the dynamics of not just beliefs,
+but also, possibly, intentions, goals, or desires:
+in general, any type of attitude towards an item of information 
+that makes the agent partial, in some way, to that information.
+Though some parallels between the `beliefs' of belief change
+and beliefs as studied in philosophy \cite{Schwitzgebel19}
+are welcome, and we will draw such parallels here too,
+we do not want to be particularly dogmatic about the meaning 
+assigned to the inputs and outputs of belief change operators.
+And certainly, nothing in the AGM model, or its various offshoots, 
+commits us to any particular metaphysical doctrine of what 
+these inputs are.
+For the rest of this work the beliefs we will look at 
+are a moving target, and the only uniform assumption we want to make about 
+them is that they are particular to an agent,
+and the agent is interested in seeing them come to pass.
+In this respect, we want to say,
+change of beliefs becomes something like a decision problem
+studied in the field of rational choice.
+
+\subsubsection{Belief change and rational choice}
+It is by now fairly well documented that
+revision is guided by similar principles 
+as those that govern rational individual choice
+\cite{Doyle91,Rott92,Bonanno09,Arlo-CostaP10,MaLD15},
+with some of the prototypical representation theorems
+\cite{GardenforsM88,Grove88,KatsunoM92}
+showing that revision operators
+can be seen to rely on preference orders 
+in just the same way that choice functions do.
+Likewise, it has never been a secret that 
+merging has many points in common with social choice,
+with several existing works,
+including some that provide the material for this thesis,
+dedicated to exploiting the connection between the two
+\cite{EckertP05,EveraereKM07,GabbayPR07,EveraereKM14,LangX16,HaretPW16,HaretW19b,HaretLPW20}.
+
+The connection, we want to say upfront, is straightforward.
+Revising a belief is like choosing
+from the outcomes consistent with
+the new, accepted information.
+Which outcomes? The ones that are, 
+of course, `best' according to 
+some preference order.
+Merging is aggregating 
+information provided by different 
+agents, similar to how individual preferences 
+in an election would be aggregated.
+% Though belief change is ostensibly not about choice,
+But, though this viewpoint can be summarized in a few
+lines, its implications, we think,
+are yet to be fully explored.
+Our aim in this work is to build on the connection
+between belief change and rational choice and use it 
+to both make sense of some existing work in
+belief change---not just revision and merging,
+but also update and enforcement---and also to 
+suggest new avenues of research.
+The guiding thought is that seeing belief change 
+as a form of choice opens up
+an entire raft of new and exciting possibilities:
+from a rich set of properties that have traditionally been used to 
+understand decision procedures, individual and collective, 
+and that can be brought to bear on existing belief change operators,
+to an assortment of tools that can facilitate the application of 
+belief change techniques to novel contexts. 
+Making the choice component of belief change
+explicit brings with it clarity and ideas for how to 
+go further.
+Or so we will argue. 
+
+In our view, the choice perspective
+is relevant to the belief change operations
+mentioned above in three main ways.
+First, it provides a good set of intuitions 
+for understanding aspects of belief change
+that have been present since the AGM beginnings, 
+such as the role and interaction between the basic postulates:
+the motivation behind the more arcane postulates for revision,
+for instance, becomes more vivid when interpreted in terms of coherence of choice;
+the difference between revision and update becomes clearer
+when the operators are reinterpreted as choice functions over possible worlds;
+and the mechanics of a merging operator is illuminated by understanding 
+that merging can be seen as an election 
+whose aim is to decide the correct bits of information
+and be fair towards the participants.
+All these aspects are presented in more detail in Chapter \ref{ch:3}.
+
+Second, the choice perspective suggests 
+new tools for analyzing familiar notions:
+the literature on rational choice is rich 
+with distinctions and properties 
+that can be readily adapted to the 
+context of belief change, if we allow ourselves 
+to see belief change operators as social procedures 
+that rely on (some type of) preference rankings.
+The applications we have in mind include tweaking 
+the way in which rankings are generated for revision
+to reflect the agent's bias towards its own belief,
+which we look at in Chapter \ref{ch:4},
+or coming up with new postulates for merging 
+aimed at capturing various aspects of fairness, 
+which we study in Chapter \ref{ch:5}.
+Notably, the literature on rational choice also anticipates 
+the acyclicity postulate needed to make Horn 
+revision work \cite{DelgrandeP15,DelgrandePW18},
+in the form of \emph{Suzumura consistency} \cite{Suzumura76,Suzumura83,BossertS10}.
+This will be discussed in Chapter \ref{ch:6}.
+
+Finally, seeing belief change operators as choice functions 
+over the set of possible worlds
+provides guidelines for what to look for when exporting 
+the formalism of belief change to other contexts,
+in this way paving the way for new applications of belief change.
+We will see this mindset at work in Chapter \ref{ch:6},
+where we try to understand revision and update applied to Horn formulas,
+and where the property of Suzumura consistency will serve as 
+a guide to pinpointing the exact type of preference order 
+we need to capture,
+and in Chapter \ref{ch:7}, where we look at revision of preference orders.
+
+\subsubsection{Choosing what to believe}
+The line of reasoning we want to 
+pursue in this work can be better grasped 
+by looking at some examples
+of belief change in action,
+with no better place to start 
+than the paradigmatic case of \emph{revision}.
+
+\begin{xmpl}{A monopoly on tool use?}{1-revision-motivation}
+	It used to be widely believed, among primatologists, 
+	that humans were the only animals to use tools.
+	Then, in the $1960$s, a young researcher studying chimpanzees in the 
+	Gombe Stream National Park in Tanzania, observed a male chimpanzee
+	named David Graybeard, using straws and intentionally 
+	stripping branches to fish for termites.
+	Here was a non-human primate
+	using tools in an undoubtedly sophisticated way,
+	something considered impossible at the time.
+	The researcher, who was none other than Jane Goodall,
+	was on track to overturn a centuries old orthodoxy.
+
+	After some tussle with getting her work published and 
+	acknowledged by the primatology community,
+	Jane Goodall's discoveries were finally accepted.
+	But incorporating these discoveries into the corpus 
+	of existing data posed a dilemma,
+	for what Jane Goodall had unearthed did not fit with 
+	the rest of the beliefs in place.
+	In a telegram, prominent British paleonathropologist Louis Leakey 
+	wrote to Goodall: 
+	``Now we must redefine tool, redefine Man, 
+	or accept chimpanzees as humans.''
+	\cite{Goodall10}
+\end{xmpl}
+
+Example \ref{ex:1-revision-motivation} already announces 
+some of the intricacies of belief change
+that a formal analysis will have to contend with.
+It highlights that beliefs, no matter how entrenched, 
+may come under scrutiny by new discoveries; 
+that, if such discoveries are accepted, 
+they might interfere with older beliefs; 
+and that, in order to maintain sanity, 
+some of the old beliefs must be reshuffled 
+to accommodate the new ones.
+The basic, no-frills model of revision
+we will present in Section \ref{sec:3-revision}
+captures only the final step 
+in Example \ref{ex:1-revision-motivation}:
+that in which the new information 
+has already been vetted and accepted,
+and the existing beliefs need to make space for it.
+
+Example \ref{ex:1-revision-motivation} also anticipates, 
+through Louis Leakey's telegram, the theme of this work:
+that belief change often involves some kind of choice,
+in this case over what items of the prior beliefs to give up.
+Indeed, Leakey seems to suggest
+that the best response to Jane Goodall's finding is either 
+to redefine the concept of tool or that of human being, 
+(presumably, to give up the notion that humans use tools),
+or to accept chimpanzees as humans
+(presumably, to give up the notion that chimpanzees and humans are different species).
+Either of these possibilities, we are led to understand, were thought by Leakey 
+to be more plausible than simple acceptance of the fact that a non-human animal
+could be capable of tool use.
+Though this sounds like an odd revision policy,
+and it is likely that it was put forward as a joke,
+it illustrates how the process of reshuffling opens up several possibilities, 
+and that resolving them requires an act of choice.
+We will elaborate this aspect in Section \ref{sec:3-revision},
+where we will see that revision can be understood as choosing 
+the most likely outcomes from the ones considered feasible.
+All this expository work will rely on existing, classical results,
+our only input being to draw attention to the way 
+in which revision can be reconceptualized 
+as a sort of decision the agent has to make about what to keep 
+and what to give up among its most cherished states of the world.
+In doing so, we will also see that standard models of revision 
+rely on a particular assumption, intended to cover cases when no 
+choice needs to be made: namely, that if the new information does not 
+contradict the prior beliefs, then revision amounts to simply incorporating 
+the new information into the existing beliefs.
+This will allow us, in Chapter \ref{ch:4} to see that such an
+assumption involves an element of choice architecture
+(i.e., about how the prior beliefs are prioritized in the revision process),
+that it is not always warranted,
+and we will look at alternative ways of modeling it.
+
+To be clear, the claim we are making is not that 
+revision is about believing whatever one wants to believe,
+or that when doing revision
+an agent shops around for a new belief and just settles on 
+the one that sounds nicest.
+Rather, our point is that the cognitive mechanism underlying 
+revision is very similar to the mechanism underlying rational choice.
+At the basic level this is simply because, as we will see in 
+Sections \ref{sec:2-choice-functions} and \ref{sec:3-revision},
+the mathematics is very similar; but we want to go further than that 
+and suggest that this is not a coincidence: if the posterior 
+information is not determined purely from the prior and new information,
+as in Example \ref{ex:1-revision-motivation},
+i.e., if there is more than one possibility for what the posterior 
+information can be,
+then some sort of selection has to happen
+if any type of reasoning, or inference is to take place;
+and a natural way of describing this process is 
+using the language of choice and preference:
+when the agent has to form a new belief it, or we may say, its mind,
+will select the information that best fits the new data 
+it is dealing with, i.e., it will make a choice informed by a preference.
+In all this, it is important to keep in mind that we intend 
+the notions of choice and preference to be tightly interconnected, 
+i.e., given the preferences, then choices are completely determined,
+and likewise in the opposite direction.
+Indeed, a large part of our efforts will be dedicated to making sure 
+that preferences and choices, in this sense, fit seamlessly with each other.
+And it is also important to keep in mind that 
+we intend the notion of preference to cover a large amount of ground:
+in a cognitive setting, as befits revision,
+preferences can encode something like the agent's evaluations of 
+how likely outcomes are; or, their salience in the agent's mind;
+or, the order in which the agent would like to see them occur.
+All these aspects describe \emph{bona fide} attitudes an agent can have 
+with respect to the outcomes, and it is part of the belief change project
+that their dynamics can be brought under the umbrella of one formal model.
+
+That being said, an equally important observation is that there is not 
+one single type of rational belief change:
+rationality comes in many flavors, and different situations 
+call for different approaches.
+Thus, the final sentence of the previous paragraph 
+would be more precise if it called for \emph{a family} of 
+formal models, rather than just one model.
+To some degree this insight was already present 
+in the original model, with the distinction 
+between contraction, expansion and revision
+\cite{AlchourronGM85,Gardenfors88}.
+It was soon ovious that this distinction did 
+not exhaust all the types of belief change worth studying,
+and subsequent research has seen a proliferation
+of belief change operations adapted to various use cases.
+In this work we will focus on a small sample of such operations.
+
+\begin{xmpl}{Keeping up with the humans}{1-update-motivation}
+	My home is controlled by a software assistant,
+	the latest in AI smarthome technology.
+	Most of the things it does are with a clear mandate from myself.
+	I tell the assistant to keep the temperature above $15\si{\degree}$ C and,
+	in a desire to unplug during the evenings, to turn the Wi-Fi off starting 
+	with $21{:}00$.
+	The assistant is receptive to my instructions,
+	which usually come in the form of \emph{if this, then that} statements,
+	and implements them most dilligently.
+	But it gets even better: the assistant follows my every move, 
+	trying to guess my needs and wants,
+	and adapts its actions to what it perceives are my behavior patterns.
+
+	Thus, after repeated exposure, the assistant learns
+	that I sometimes turn the Wi-Fi back on after $21{:}00$, and this
+	usually coincides with times when my friend, who lives 
+	on a different continent, is online.
+	After a while, the assistant asks me if it should integrate 
+	this information into its rule base and I agree.
+	The assistant modifies its list of instructions accordingly,
+	keeping the Wi-Fi on during the evenings when, 
+	and only when, my friend is online.
+\end{xmpl}
+
+Example \ref{ex:1-update-motivation} features an artificial agent 
+whose epistemic state consists of rules about how it is supposed 
+to manage a household.
+The input for the agent comes from observations it makes, 
+and we may assume it is as reliable as can be: 
+for instance, the agent only accepts new facts after they have undergone
+a long enough process of confirmation.
+The result, then, is a change in the rules that the agent implements:
+at first glance, a case of revision not unlike the one described 
+in Example \ref{ex:1-revision-motivation}.
+Note, however, that in this case the new information
+(i.e., that the Wi-Fi is on if and only if my friend is online)
+is not inconsistent with the rules already in place;
+and, if the assistant were to simply add the new information to its 
+epistemic state, as we said revision is committed to doing,
+then it would use its prior information that the Wi-Fi 
+should be turned off after $21{:}00$ in conjunction to the new information 
+to infer that my friend must actually be offline!
+
+The scenario described in Example \ref{ex:1-update-motivation}
+shows that sometimes adherence to prior information 
+at all costs is wanted.
+In these cases we would expect that the posterior information 
+retains more of the new information than what would be warranted 
+by a revision operator, 
+while still being biased by whatever prior beliefs 
+were in place.
+Such an operation is that of \emph{update} \cite{KatsunoM91}, 
+and we will see in Section \ref{sec:3-update} that the principles 
+behind it are are subtly different from the principles behind revision.
+We will also see that this difference can be elegantly expressed
+in the way that an update operator chooses what to 
+retain from newly acquired information.
+
+The assistant in Example \ref{ex:1-update-motivation}
+reasons in terms of observations and rules: 
+\emph{if this, then that}.
+We can assume this is because it is a fitting
+mode of thought for an AI assistant and, not least,
+because it keeps the complexity of reasoning within a 
+manageable limit.
+In general, we can imagine that belief change,
+be it revision or update, is done by agents with
+limited expressive and computational resources,
+in languages that are specialized to a particular 
+application. 
+What this means, in practice, is that the epistemic states 
+of the agent, i.e., its prior and posterior information,
+and possibly the incoming information as well,
+need to adhere to some specific format.
+And it is important, if belief change is to be applied 
+outside its propositional logic ivory tower,
+that the main insights can be exported to other languages:
+ideally, these insights end up holding in the specialized 
+formalisms in the same way that they hold in the base 
+language of propositional logic.
+Experience shows, however, that the choice 
+of language makes a significant difference 
+to what a belief change operator can do,
+with some effort having to be expended just so we can 
+arrive at the same results.
+
+In Chapter \ref{ch:6} we will look at 
+revision for Horn formulas:
+such formulas make up a language that can be 
+seen as a restricted fragment of propositional logic,
+and that is suited to represent 
+facts and rules such as the ones my
+(hypothetical) AI assistant uses.
+Chapter \ref{ch:6} will start by surveying 
+the measures that need to be taken 
+to emulate the classical representation results
+for revision with Horn formulas.
+We will see that belief change for such 
+a formalism works as a form of \emph{constrained} choice,
+constrained by the strictures of the 
+language we are working in. 
+And we will also see that existing insights 
+for how to work around these strictures
+have clear analogues 
+in properties that have been studied in 
+the rational choice literature;
+the same properties, then, allow us to 
+extend these results to update for Horn formulas.
+This is an example of how sensitivity to 
+the way in which choice guides belief change can 
+suggest fixes when the usual techniques break down.
+
+In both Examples \ref{ex:1-revision-motivation} 
+and \ref{ex:1-update-motivation}
+it is assumed that the newly acquired information 
+comes from an authoritative source,
+and that it takes precedence over the prior information
+if a conflict between the two is present.
+But we can also imagine cases where the newly acquired information 
+stems from a source that is trusted, though not necessarily more 
+than the prior information.
+
+\begin{xmpl}{The art of diagnosis}{1-enforcement-motivation}
+	A doctor sees a patient presenting 
+	with cough and a stuffy nose.
+	Based on an initial examination, 
+	the doctor concludes that it is either 
+	an allergic reaction, or bronchitis. 
+	The patient, who has done their own 
+	research of the symptoms online, points 
+	out that the symptoms are consistent 
+	with a new strand of coronavirus 
+	that has been making the headlines.
+	After checking this information
+	the doctor acknowledges the possibility, 
+	and accepts that it can be one of the 
+	causes for the patient's symptoms.
+	Thus, the doctor becomes committed to 
+	take the possibility of a coronavirus 
+	diagnosis possible, but does not consider 
+	it strictly more likely 
+	than their own original assessment. 
+	As a result, the doctor just adds
+	the coronavirus hypothesis to the other two 
+	conditions consistent with the symptoms,
+	i.e., allergies or bronchitis.
+\end{xmpl}
+
+Example \ref{ex:1-enforcement-motivation} calls 
+for a type of change that,
+to the extent possible, treats
+newly acquired information  
+as equally likely as the prior information.
+This is a different strategy than that 
+employed by either revision or update,
+where new information is accepted
+even if this comes at the cost of giving 
+up the prior information entirely:
+here we want to preserve as much of the 
+prior information as possible,
+alongside the new information.
+In choice terms, this is equivalent to 
+deciding not which outcomes consistent
+with the new information to remove,
+but which outcomes consistent 
+with the prior information to add;
+ideally, as in Example \ref{ex:1-enforcement-motivation},
+we can add all these outcomes
+and expand the epistemic state 
+to one that gives equal weight to all of them.
+But if, in doing so, the answer 
+grows to include all possible outcomes,
+and thus becomes non-informative,
+then a choice becomes mandatory
+and the preference mechanism kicks into gear. 
+We call this new type of 
+operation \emph{enforcement} \cite{HaretWW18}, 
+and in Section \ref{sec:3-enforcement}
+we will see that the principles behind it 
+are yet more different from the principles 
+behind revision and update. 
+Enforcement provides an example where seeing belief change 
+as a form of choice proves useful in understanding 
+a novel type of operator.
+
+Examples \ref{ex:1-revision-motivation}, 
+\ref{ex:1-update-motivation} and \ref{ex:1-enforcement-motivation}
+all track changes in the epistemic state of one agent:
+the prior beliefs and the posterior beliefs, 
+for these operations, are always situated in one agent's `head'.
+We can easily imagine, however, that several agents pool
+their information together in the attempt to reach a common conclusion,
+as is the case in a group decision scenario.
+There are many instances of this type of aggregation,
+from nationwide elections to the group 
+of doctors in Example \ref{ex:1-choice-motivation}
+that have to converge on a common treatment protocol.
+A more showy, if less serious, example is the decision process
+leading up to the annual list of Oscar nominees.
+Though we do not know the precise details of how this process works, 
+we can consider its complexities in a toy example.
+
+\begin{xmpl}{$\#$OscarsSoFossilized}{1-merging-motivation}
+	Year after year, the Oscars attract the ire of moviegoers everywhere 
+	for their choice of who to acknowledge. 
+	Sometimes this is for handing out honors
+	to people who, it is thought, do not deserve them; 
+	at other times it is for ignoring people who do; 
+	usually it is for both, and the year $2020$ was no exception \cite{Brody20}.
+	For simplicity, assume the Academy consists of exactly four members, 
+	who have to decide the $2020$ nominees for the category of Best Director.
+	There are three directors up for contention:
+	Alma Har'el, director of \emph{Honey Boy}, 
+	Bong Joon Ho, director of \emph{Parasite}, 
+	and C\'eline Sciamma, director of \emph{Portrait de la jeune fille en feu}. 
+	The final lineup is supposed to consist of exactly two nominees,
+	so not all of the three names can make the cut.
+	When queried, the Academy members express the following opinions:
+	\begin{description}
+		\item[Member $1$:] I think Alma Har'el and Bong Joon Ho should be nominated. 
+			I haven't seen \emph{Portrait de la jeune fille en feu}, so I have no opinion
+			on C\'eline Sciamma.
+		\item[Member $2$:] Definitely Alma Har'el, and maybe Bong Joon Ho or C\'eline Sciamma too.
+		\item[Member $3$:] I think only Bong Joon Ho deserves the nomination.
+		\item[Member $4$:] Neither Alma Har'el nor Bong Joon Ho seems good enough,
+			but C\'eline Sciamma's movie really impressed me and I think she should be nominated.
+	\end{description}
+	Since there can be only one list of nominees,
+	the opinions of the four members need to be aggregated into a consensus opinion.
+	This consensus has to reflect the opinions that go into obtaining it,
+	and it has to meet the size constraint, i.e., that there can be only two nominees.
+
+	After some back and forth,
+	during which they realize that
+	there is no way of making everyone happy,
+	the Academy members decide to nominate 
+	Bong Joon Ho and C\'eline Sciamma,
+	on the grounds that this 
+	will lead to the least amount of
+	unhappiness.
+\end{xmpl}
+
+There is a split, in Example \ref{ex:1-merging-motivation},
+between the four Academy members,
+i.e., there is no lineup universally agreed upon.
+A choice needs to be made, but whatever it is, 
+someone will be unhappy.
+Can a fair outcome be ensured?
+Example \ref{ex:1-merging-motivation} 
+illustrates some of the key challenges of 
+aggregating information originating from different sources:
+the aggregation procedure should balance each source in an appropriate way, 
+e.g., by factoring in reliability of the sources if the goal is an accurate result, 
+or, on the contrary, by treating all sources equally if, 
+as is the case in Example \ref{ex:1-merging-motivation},
+the goal is a fair result;
+the sources may provide conflicting information, 
+such that there is no one answer that fits all; 
+the information provided may reflect complex interdependencies between issues
+(if this, then that, and if not then perhaps some other thing), 
+which adds an extra layer of complexity to the issue;
+the result may be expected to meet certain additional criteria, 
+e.g., it should be of a specific format, or, 
+as in Example \ref{ex:1-merging-motivation},
+satisfy certain cardinality constraints.
+These challenges go beyond the challenges of 
+deciding with just one agent,
+and new techniques need to be brought in.
+
+We will model tasks like the one faced by 
+the Academy members in Example \ref{ex:1-merging-motivation}
+using the framework of \emph{merging} \cite{KoniecznyP02,KoniecznyP11}. 
+In Section \ref{sec:3-merging} we will present
+a set of established principles for thinking through such scenarios,
+together with a handful of mechanisms for extracting an actual answer.
+In the process we will see how 
+merging fits in with the other belief change operators,
+and how in its case the choice perspective is 
+a particularly apt lens.
+This perspective, according to which merging 
+can be seen as a collective decision making procedure,
+invites the question of what tools there 
+are to ensure that the merging process is fair.
+The standard set of principles used to characterize 
+merging already include certain fairness guarantees,
+but they do not exhaust all the properties 
+we would like to see instantiated.
+Thus, in Chapter \ref{ch:5} we put forward 
+a series of novel properties,
+all of which address, in some way, the notion of 
+fairness and enrich the merging landscape.
+Most of these properties come from the social choice literature,
+where they have been used to understand voting procedures \cite{Zwicker16,BaumeisterR16}:
+here is an example of social choice coming to the aid 
+of belief change, by suggesting a series of dimensions along which
+to judge merging operators.
+
+Finally, let us revisit the example we started with,
+of a doctor trying to decide on a course of treatment 
+for a new disease.
+
+\begin{xmpl}{Treating a novel disease with novel hunches of what works}{1-pref-change-motivation}
+	Doctor $1$ from Example \ref{ex:1-choice-motivation} is faced with the same dilemma
+	of choosing what combination of drugs $a$ and $b$
+	to administer to sick patients.
+	Initially, the doctor is inclined to think that 
+	the best course of action is to use $a$ and $b$ together,
+	followed by $a$ alone, followed by $b$ alone.
+	Doing nothing seems like the worst thing to do,
+	and comes last in the doctor's list of actions to take.
+
+	But after a couple of weeks of administering the cocktail of 
+	$a$ and $b$ drugs, the doctor realizes that they are not
+	effective at all, and might even be harming patients.
+	Thus, the doctor becomes convinced that administering nothing
+	is better than administering $a$ and $b$ together, and 
+	revises their policy accordingly.
+	However, this leaves a gap that puzzles the doctor:
+	where does this leave the treatments that consist of 
+	just $a$ and $b$? Does swapping the $a$ and $b$ pair 
+	with the option of administering nothing downgrade 
+	these treatments as well? Or do they still stand 
+	as better options than doing nothing?
+\end{xmpl}
+
+We want to construe the doctor's epistemic state, in this case,
+as a preference over the possible treatment options. 
+Example \ref{ex:1-pref-change-motivation}, then,
+describes a scenario when the preference order itself undergoes 
+revision. That it makes eminent sense to revise a preference order
+jumps out if we see preferences as expressions not of taste, or whim,
+but as the result of a deliberative process: the doctor 
+in Example \ref{ex:1-pref-change-motivation} arrives at their ranking 
+of the treatment options after weighing various factors,
+such as the known properties of the drugs and their own experience.
+As such, the preference ranking reflects the doctor's judgment of 
+how effective the treatment options are relative to each other,
+and is subject to examination and revision in the same way that 
+a judgment is. This view, according to which preferences function 
+as \emph{comparative evaluations} of alternatives \cite{Hausman11},
+makes it possible for an agent to change its preferences as it
+gathers more information or feedback from the external world.
+Example \ref{ex:1-pref-change-motivation} showcases a scenario in 
+which this is precisely what happens: if we see a preference order
+as made up of individual comparisons, 
+e.g., the comparison between administering drugs $a$ and $b$ versus 
+doing nothing,
+then change can be triggered
+by finding out that some of these comparisons are wrong.
+The agent then has to adjust its preference around this
+new information, keeping some of the old comparisons and
+potentially discarding others.
+What is kept and what is discarded is best construed, 
+of course, as a matter of choice; and where there is 
+choice there are preferences.
+
+We will call this process \emph{preference revision},
+and in Chapter \ref{ch:7} we will present a set 
+of principles and results that characterize 
+this operation in terms of preferences over 
+the basic comparisons that go into making a 
+preference order. To put it more succinctly,
+revising preferences amounts to having preferences 
+over preferences. We will see that the basic apparatus of 
+belief revision lends itself to modeling 
+preference change, but not in a straightforward 
+manner: due to the nature of preference orders,
+concrete operators end up looking more 
+like enforcement operators as described 
+in Section \ref{sec:3-enforcement} and anticipated
+by Example \ref{ex:1-enforcement-motivation};
+and, as for revision of Horn formulas, 
+extra care needs to be taken such that 
+changes brought to the input do not alter the 
+basic format of the epistemic state.
+This is, then, another example where 
+the principles of belief change get to be 
+applied outside their comfort zone,
+with the help of tools from choice theory.
+
+\subsubsection{What is to come}
+In Chapter \ref{ch:2} we will introduce the 
+main background on propositional logic 
+and rational choice that we will need for the 
+remaining part of this work.
+This material is largely expository, and 
+the results presented in it are based on 
+standard references.
+
+In Chapter \ref{ch:3} we will look at the 
+basic models of the belief change operations
+that interest us: revision, update, enforcement 
+and merging. Each operator is analyzed along a 
+number of typical dimensions:  
+a set of characteristic postulates;
+a family of characteristic preference relations on outcomes; 
+a specific choice function that 
+connects the two, via a representation result;
+and a few concrete, usually distance-based operators that 
+fit into the outlines drawn by the postulates.
+The material on revision, update and merging is 
+based on known results, and it is
+presented in a way that emphasizes the role of 
+choices and preferences. 
+The material on enforcement is part of our contribution 
+to this thesis, 
+and is based on work published at IJCAI 2018 \cite{HaretWW18}.
+
+In Chapter \ref{ch:4} we study variants of revision
+that swap one of the standard postulates with alternative 
+versions, taken to encode different biases an agent 
+can have towards the prior information. 
+We present postulates, preferences on outcomes 
+that track these postulates, and show how to construct 
+distance-based operators based on intuitive choice 
+functions that exhibit these biases.
+The method we put forward manages to both capture 
+known revision operators, and to introduce some new ones. 
+Chapter \ref{ch:4} is based on work published at 
+NMR 2018 \cite{HaretW2018b} and IJCAI 2019 \cite{HaretW19a}.
+
+Chapter \ref{ch:5} looks at merging as a multi-agent 
+social procedure, and puts forward a number of properties
+aimed at capturing different aspects of fairness:
+insensitivity to syntax, 
+a consideration of broad lines of agreement in the profile that we call here \emph{collective efficiency},
+a sensitivity to changes in the profile that we call here \emph{responsiveness}, 
+strategyproofness
+and proportionality.
+These properties come in the form of postulates, 
+and we follow common practice in mapping the postulates 
+onto preferences on outcomes and checking existing 
+merging operators against these postulates.
+Sections \ref{sec:5-syntax}, \ref{sec:5-evenhandedness} and \ref{sec:5-responsiveness}
+are based on work published at ECAI 2016 \cite{HaretPW16}, 
+Section \ref{sec:5-strategyproofness} is based on work published at JELIA 2019 \cite{HaretW19b},
+and Section \ref{sec:5-proportionality} is based on work published at AAAI 2020 \cite{HaretLPW20}.
+
+Chapter \ref{ch:6} looks at revision and update for Horn formulas,
+for which the challenge is different than in the other chapters:
+the issue now is not of how to fit classical operators into new intuitions,
+but to find new ways of enforcing classical intuitions.
+This involves coming up with postulates tailored specifically 
+for the Horn fragment, which manage to prop up conclusions that 
+follow naturally in standard propositional logic,
+but fail in the Horn fragment.
+Since existing operators turn out to be a poor fit 
+for the Horn fragment, new ones have to be designed.
+Sections \ref{sec:6-hhh-revision} and \ref{sec:6-hhh-update} 
+are based on work presented 
+at IJCAI 2018 \cite{CreignouHPW18},
+while Section \ref{sec:6-revision-hph}
+is partly based on work presented 
+at NMR 2018 \cite{HaretW2018b}, 
+though the representation theorem is new.
+
+Chapter \ref{ch:7} puts forward a model of preference revision
+that follows the lines of standard belief change operators,
+with postulates, preferences and choice functions that 
+link the two. The input to a preference revision operator 
+is a preference order, conceived of as a set of comparisons 
+between items; what a preference revision operator does, then,
+is to choose which of these comparisons it will give up, 
+if a contradiction occurs. In its details, this models is mostly 
+similar to the model for enforcement.
+Chapter \ref{ch:7} has not been published anywhere, and can be 
+considered new.
+
+Conclusions and discussions of related work are offered 
+at the end of every chapter,
+but Chapter \ref{ch:8} provides a more general overview of 
+the material preceding it, together with some more general 
+musings and thoughts on future work.
+
+Finally, in a disclosure of what is not to come,
+we mention that there is also additional work 
+that has been published in the lead up to 
+this thesis, that has not made it into the material to follow,
+for lack of an obvious fit, but still relates
+to either belief change or social choice. 
+The belief change strand includes work on 
+merging of Horn formulas \cite{HaretRW15,HaretRW17}, 
+a type of reverse merging operation we called \emph{distribution} \cite{HaretMW16},
+deviation of belief change operators with respect to fragments of propositional logic \cite{HaretW17},
+revision of argumentation frameworks \cite{DillerHLRW15,DillerHLRW18}
+and merging of argumentation frameworks \cite{DelobelleHKMRW16}.
+The social choice strand includes work on
+aggregation of incomplete CP-nets \cite{HaretNG18}
+and solutions for constructing a ranking on items based on a ranking of sets 
+of items \cite{HaretKMO18}.

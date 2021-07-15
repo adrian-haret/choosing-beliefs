@@ -1,0 +1,296 @@
+\chapter{Conclusions}\label{ch:8}
+
+In this final chapter we look back at the road traveled so far
+and gather some thoughts about how things fit together, 
+and where to go from here.
+This chapter serves as a summary of the contents of the thesis,
+a reflection on its connections to other, more broadly related work,
+and a pointer to directions for future research.
+
+In putting together the material for this thesis 
+we took seriously a claim made by Hans Rott and others \cite{Rott01,Bonanno09,Arlo-CostaP10}
+that changing beliefs is like making a decision. 
+According to this viewpoint, revision is analogous to a single agent
+making a decision as to what possible outcomes out of a given menu it will focus on,
+where the menu consists of the allowed outcomes provided by the new information;
+update is a variation on this, according to which the final decision
+is distributed across all the models of the prior information;
+and merging is analogous to a group of agents 
+deciding on the collective set of acceptable outcomes,
+subject to a constraint.
+The parallel with decision making was facilitated by the fact that 
+the revision postulates $\ppr{1}$, $\ppr{3}$ and $\ppr{5-6}$,
+as well as the update postulates $\ppu{1}$, $\ppu{3}$ and $\ppu{5-6}$,
+are close analogues of axioms $\ooch{1-4}$ for individual rational choice,
+and that merging postulates $\ppm{0-8}$, besides rehashing the revision postulates,
+also closely track properties typically employed to characterize voting rules.
+This parallel, we argued in Chapters \ref{ch:1} and \ref{ch:3}, 
+also makes sense on a conceptual level:
+the preferences that lie at the heart of rational choice, individual as well as social,
+reappear in belief change as preorders over outcomes, 
+encoding the agents' assessments of the plausibility, or desirability,
+of outcomes relative to each other.
+
+More broadly, the idea that agents use something along the lines of preference 
+information when drawing inferences in the wild fits with a distinct 
+line of research on the way in which non-monotonic logics look like at the semantic level
+\cite{StrasserA19}.
+The idea, simply put, is that when agents use their background information,
+which we may call $\phi$, to figure out whether something, which we may call $\mu$, holds
+in the real world, 
+what they do is that they pick \emph{some} models of $\phi$ on top of which to reason.
+What exactly this picking represents has never been entirely settled,
+but we can readily see that,
+from a cognitive point of view,
+it makes eminent sense:
+% if $\phi$ represents the entirety of an agent's background knowledge,
+if the agent had to consult all the models of $\phi$ before it could
+make up its mind as to whether $\mu$ follows from it,
+as classical logic instructs,
+then it would probably never reach any conclusion,
+since the number of possibilities is likely to be astronomically high;
+and even if the agent did manage to reach a conclusion in efficient time,
+the answer would probably be, more often than not, \emph{no}, since most real world inferences do not account for all the subtle,
+but entirely irrelevant, ways in which a scenario can be varied.
+Rather, we can imagine that real world agents draw inferences by 
+picking something like 
+the most `normal', `typical', or `probable' models of $\phi$
+and checking those to see if $\mu$ holds in them.
+Of course, the agent does not literally go 
+through a list and picks out models of $\phi$: 
+a specialized module of its cognitive apparatus, 
+e.g., its memory, attention or social background, 
+does this for it.
+Thus, it could be argued, ambitiously, that all of non-monotonic reasoning,
+in general, is about choice: 
+choice over which of the myriad possible configurations of the world 
+to use in a specific reasoning task.
+And we can picture the rational choice theorists of yore 
+pointing out that this process can be described,
+as it actually has been \cite{Shoham87,Pearl89,KrausLM90},
+using choice functions and preference orders.
+
+In Sections \ref{sec:3-revision}, \ref{sec:3-update} and \ref{sec:3-merging}
+we presented the formal models for revision, update and merging, respectively,
+in the light of this preference-driven, choice theoretic approach.
+In doing so, we merely retraced steps 
+taken by our predecessors \cite{Rott01,Bonanno09,Arlo-CostaP10,KoniecznyP11},
+steps that were present even in the original models of 
+belief revision \cite{AlchourronGM85,KatsunoM92}.
+
+In Section \ref{sec:3-enforcement} we showed that the choice theoretic
+perspective can also be useful for the design of new belief change operators,
+and exemplified this on \emph{enforcement}, a dual version of revision 
+that sits somewhere on the spectrum of non-prioritized belief change operators.
+The main challenge, for us, of figuring out what enforcement does
+was to understand it at the semantic level: what do the preorders look like?
+And what kind of choice function best fits enforcement?
+Originally, we opted for a representation in terms of partial orders on 
+formulas, or sets of interpretations \cite{HaretWW18},
+with the choice function picking out the one set that was best, given the 
+new information: the partial order, then, had to be designed in such a 
+way that there would always be a unique best set of interpretations out of 
+any lineup that could be presented, and the specification of the
+conditions under which this held true ended up being rather opaque.
+In this work we switched to a more standard representation,
+in terms of preorders on the interpretations themselves; what had to be changed, then, 
+was the choice function: we could not use something that selected models of 
+$\mu$, since the models of $\mu$ needed to be left in place. What we needed 
+was a function that added models to $\mu$ in as greedy manner as possible, 
+and this led us to the idea of the addition operator.
+The idea behind enforcement proved to be more fertile than we thought it would be,
+as it plied itself naturally to revision of preferences, 
+described in Chapter \ref{ch:7}.
+The original aim for enforcement, which was to provide a principled 
+approach to enforcement in abstract argumentation \cite{Baumann12}, 
+ended up being sidelined, but is a promising direction for future work.
+
+The same choice theoretic perspective, applied back to revision,
+led us to think about the role of the different postulates in 
+the grand scheme of things. It became clear that postulate $\ppr{2}$
+was not a rationality constraint in the same manner as the other postulates were,
+in the sense that it concerned exclusively the placement of the models of $\phi$
+in the agent's ranking on outcomes, and corresponded to something like the agent's 
+attitude, or bias, about how privileged these models should be when revision needed to occur:
+in this perspective, $\ppr{2}$ could be seen as one attitude among many.
+A more systematic attempt to generate such biases, using simple variations of the 
+functions used to rank outcomes relative to $\phi$, 
+i.e., the \emph{aggregation functions} in Section \ref{sec:2-distances},
+led to Chapter \ref{ch:4}.
+Of course, more sophisticated variations,
+corresponding to more psychologically realistic biases
+can be imagined, and it is an exciting prospect to 
+think of revision along these parameters.
+At the same time,
+the more fine grained view on the types of biases
+an agent can have towards its initial beliefs raises the question of what these attitudes 
+are good for, i.e., whether they can be used for tasks 
+such as learning or tracking the truth \cite{Kelly98,BaltagGS19}.
+The idea here is to view 
+%Here one views
+revision as part of an ongoing process by which the agent 
+continuously refines its representation of the outside 
+world,
+with the aim of settling on stable, correct information.
+Such a task, we think, provides a natural benchmark for revision operators,
+and it has the potential to connect belief revision 
+to other topics of importance to
+the field of AI.
+It would also be interesting to study the complexity of these operators,
+and see how it compares to the complexity of 
+existing belief change operators \cite{EiterG92,PfandlerRWW15}.
+
+In Chapter \ref{ch:5} we looked at merging, which is to revision 
+as social choice is to individual rational choice.
+From the onset we opted to look at merging as a collective decision 
+process, whose aim is to be fair, rather than as an information aggregation
+process, whose aim would be to be right, or accurate. Postulates $\ppm{0-8}$ 
+are, largely, compatible with both approaches.
+The idea of looking at merging as a kind of voting scenario, where the candidates 
+are the outcomes, suggested that postulates $\ppm{0-8}$ were only a starting point, and 
+that merging was fair game for the large variety of 
+properties studied in social choice.
+This led to the original paper \cite{HaretPW16} and to Sections \ref{sec:5-syntax}, 
+\ref{sec:5-evenhandedness} and \ref{sec:5-responsiveness}, which are based on it.
+Shortly after, the \emph{Handbook of Computational Social Choice} \cite{BrandtCELP2016} 
+and the volume on \emph{Trends in Computational Social Choice} \cite{Endriss17} came out, 
+and it became clear that merging occupied a place somewhere in between 
+combinatorial voting \cite{LangX16} and multiwinner voting \cite{FaliszewskiSST17},
+and that the transfer of knowledge from the classical voting models to more 
+sophisticated settings was a matter of considerable interest,
+so we set our sights on strategyproofness.
+At the same time, our interests were equally stoked by the idea that merging, 
+or a merging-like framework, could be used to aggregate other types of formalisms of 
+interest to the AI community, such as Horn formulas \cite{HaretRW15,HaretRW17} or 
+abstract argumentation frameworks \cite{DelobelleHKMRW16}. 
+This led us to consider applying acceptance notions 
+(such as the skeptical and credulous notions presented in Sections \ref{sec:5-strategyproofness})
+to the results of a merging operator, and to see what happened to the 
+existing strategyproofness results \cite{EveraereKM07}. Since our methods for calculating 
+satisfaction with respect to the merging results were different from the original setting \cite{EveraereKM07},
+there was no promise that its results would be instantly applicable. What we found, however, was that 
+the situation was even worse, in the sense that, with one exception, 
+restrictions that guaranteed strategyproofness in \cite{EveraereKM07} 
+failed to do so in our setting.
+
+The main goal for future research here is to tie the properties in
+Sections \ref{sec:5-syntax}, 
+\ref{sec:5-evenhandedness} and \ref{sec:5-responsiveness} 
+together with the notions of strategyproofness in Section \ref{sec:5-strategyproofness}
+for a general result along the lines of the classical theorems of 
+social choice theory \cite{Gibbard73,Satterthwaite75,DugganS00}.
+Our aim is to also consider extended settings of manipulation,
+e.g., bribery~\cite{BaumeisterEER15}, where sets of agents can be 
+incentivized to form a joint manipulating coalition.
+Our work on merging and proportionality also suggests several directions for future research.
+Even though the two proportionality postulates $\ppm{\CPROP}$ and $\ppm{\BPROP}$ 
+we proposed apply only to very restricted instances,
+% One the one hand, 
+experience has shown that even weak proportionality postulates 
+have proven sufficient for axiomatic characterizations
+\cite{LacknerS18b}.
+In our work, as well, 
+these two postulates are sufficient to distinguish proportional from non-proportional operators.
+On the other hand, stronger postulates are desirable 
+to determine to which degree proportionality guarantees can be given.
+This has recently been investigated in the context of approval-based 
+committee elections \cite{AzizBCEFW17,AzizEHLFS18,FernandezELGABS17}, 
+and this line of work can serve as a basis for a similar analysis for belief merging operators.
+Coming back to manipulation,
+it can be fully expected that proportional belief merging 
+operators are prone to strategic voting, 
+as in the setting of approval-based committee elections 
+even weak forms of proportionality and strategy-proofness have been shown to be incompatible \cite{Peters18}.
+Still, it has been found that the percentage of 
+manipulable instances depends strongly on the choice of voting rules~\cite{LacknerS18}, indicating that 
+a detailed analysis of vulnerabilities is an interesting avenue for future work.
+Finally, it would be interesting to see if the framework of merging can be used 
+in different social choice contexts, e.g., resource allocation \cite{ChevaleyreEM17}.
+
+Chapters \ref{ch:4} and \ref{ch:5} are both concerned with foundational issues in the theory of belief change.
+The remaining chapters have a more applied bent.
+Chapter \ref{ch:6} takes us back to the single-agent belief change operations of 
+revision and update, this time applied to the Horn fragment. 
+Section \ref{sec:6-revision-hph} developed alongside Chapter \ref{ch:4}.
+It was clear to us that in certain situations postulate $\ppr{2}$ would make an $\HPH$-revision operator
+choose a set of interpretations that could not be expressed as a Horn formula,
+but a weaker version of postulate $\ppr{2}$, which allowed the operator to select some 
+portion of that set that could be expressed as a Horn formula, might work.
+The catch, of course, was that such a discriminatory behavior was bound 
+to violate postulate $\ppr{\NEUT}$.
+Sections \ref{sec:6-hhh-revision} and \ref{sec:6-hhh-update} grew out of an attempt to extend 
+the basic framework for revision in fragments in \cite{DelgrandeP15,DelgrandePW18} to other settings:
+first of all to update, and then to the weaker postulates $\ppr{7-8}$ (and $\ppu{7-8}$),
+describing partial preorders. The latter turned out to be more challenging.
+The main challenge for the future, in this case, is to flesh out the properties that are essential 
+for the representation results to work, and extend these results to other fragments,
+in the manner of existing models \cite{DelgrandePW18}. 
+
+Chapter \ref{ch:7} applies the principles of belief change to preferences.
+Since belief change, as described in Chapter \ref{ch:3}, is itself about 
+choice and preferences, preference change ended up being characterized in terms 
+of preferences on preferences,
+which coincided with thoughts about the dynamics of preferences from Sen and others \cite{Sen77}.
+Interestingly, the principles that were best suited for this type of operation 
+were not the revision postulates $\ppr{1-6}$, but their dual versions $\ppe{1-6}$,
+used for enforcement.
+This formulation also suggested the right kind of choice function for preference revision 
+operators, with the addition operator in Chapter \ref{ch:7} being adapted directly 
+from the addition operator in Section \ref{sec:3-enforcement}.
+In general, due to its flipped choice function
+that adds elements to the new information rather than removing them, 
+enforcement is more suited to describe the dynamics of types of objects 
+that are constructed out of some building block-like elements, in the way in which strict partial orders 
+are constructed out of their comparisons.
+By contrast, a propositional formula is not `made up of' its models in the same way in which
+a partial order is constructed out of its comparisons:
+a propositional formula is more like a set of specifications, with its models 
+being the outcomes that meet those specifications.
+
+To put this differently, we could have have approached preference revision 
+in an alternative way, by using a logical formalism
+in which the object being revised would be something like 
+a preference formula $\phi$, 
+whose models are all the 
+different preference orders that satisfy it. 
+Such a formalism could be a fragment of propositional logic, e.g., of acyclic definite Horn clauses 
+consisting of two variables, where one such clause $a\rightarrow b$ encodes the comparison 
+that $a$ is at least as good as $b$. Such a fragment, however, is not closed 
+under conjunction, and therefore does not fall within the purview of 
+existing work on revision in fragments \cite{DelgrandePW18}.
+Another option would be to use a formalism specifically tailored to 
+talk about preference orders, such as the language $\mathrm{PL}$ \cite{BienvenuLW10},
+but there we would encounter the same problems of expressibility, 
+i.e., of making sure that the output will be expressible in the target language. 
+Either way, if we proceeded in this way, the revision problem would 
+have amounted to selecting some models of the new information $\mu$,
+and in this case the revision postulate 
+$\ppr{1-6}$ would be the appropriate postulates to use. 
+This is definitely a viable alternative, and a promising direction for further work.
+
+More generally, one lesson that can be drawn from this thesis is that a belief change 
+operator arises out of a combination of a few basic elements: 
+a language for representing the information,
+a set of logical postulates,
+a set of semantic properties describing the preferences over outcomes, 
+and a choice procedure connecting the two.
+For propositional revision we have propositional logic, 
+postulates $\ppr{1-8}$, properties $\oor{1-7}$ and the choice procedure 
+that selects the minimal elements of $\mu$.
+In the Horn fragment we have the same choice procedures
+but a different representation language,
+which then requires that the postulates and properties be supplemented to make up 
+for the expressive limitations of Horn formulas.
+For enforcement and its offshoots, the postulates are $\ppe{1-6}$, the properties are $\ooe{1-6}$
+and the choice function is given by the addition operator, with additional quirks depending on the 
+type of representation language used.
+Designing a belief change operator requires all these elements to work together, 
+in what is usually a delicate and fragile balance: modifying one element, even slightly, usually requires 
+rethinking most of the other elements as well. At the moment, a universal, foolproof recipe 
+for applying belief change to any Knowledge Representation formalism we might be interested in
+still seems slightly out of reach. Hopefully, as more work becomes available, the gap will become narrower.
+
+
+
+
+
