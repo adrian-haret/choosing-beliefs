@@ -885,14 +885,13 @@ $$
 	[\phi\re^\as\mu]\defeq\min_{\le_\phi}[\mu].
 $$
 Note that we have defined $\re^{\as}$ as an $\L$-revision operator,
-i.e., an operator that returns propositional formulas,
-not necessarily Horn formula:
-this is a precaution against problems that can arise from 
+i.e., an operator that returns propositional, and not necessarily Horn, formulas:
+a precaution against problems that can arise from 
 $\min_{\le_\phi}[\mu]$ not being $\horn$-closed.
 It is clear that $\min_{\le_\phi}[\mu]$ represents some 
 propositional formula, but whether it represents a Horn formula 
-is not obvious at this point. 
-We will see soon enough that this precaution is warranted.
+is not obvious at this point, 
+and we will see soon enough why this precaution is warranted.
 
 We also need the tools to reconstruct plausibility relations 
 from the information provided by the revision operator,
@@ -928,7 +927,7 @@ we additionally have that preorders $\le^{\exc}_{\phi}$ are
 strict for any distinct interpretations $w_1$ and $w_2$,
 i.e., if $w_1\neq w_2$ then $w_1 <^{\exc}_{\phi} w_2$.
 
-On the flip side, unlike in propositional logic,
+On the flip side: unlike in propositional logic,
 the exhaustive revealed relation is no longer guaranteed to
 be complete: 
 indeed, if $[\phi\re \px_{1,2}]=\{w_1\cap w_2\}$,
@@ -1004,23 +1003,22 @@ then there is no way to make a comparison only between the two of them,
 and the revealed relation may feature patches where
 the revision operators has nothing informative to say.
 
-Nevertheless, a quick glance at
+Nevertheless, a glance at
 Example \ref{ex:6-hhh-revision-exhaustive-revealed-not-transitive}
 suggests an easy fix:
-it is straightforward to see that
-the transitive closure of $\le^{\exh}_{\phi}$,
+note that the transitive closure of $\le^{\exh}_{\phi}$,
 as depicted in Figure \ref{fig:6-hhh-revision-exhaustive-revealed-not-transitive},
 is an ordering extension of $\le^{\exh}_{\phi}$, as defined in Section \ref{sec:2-choice-functions},
 i.e., a relation that preserves all the comparisons
 in $\le^{\exh}_{\phi}$, including the strict ones.
-Even if the revision operator does not explicitly state
+Thus, even if the revision operator does not explicitly state
 that $a$ is better than $b$, given the prior information $\phi$,
-we can still infer this from the intermediary comparisons 
+we may still attempt to infer this from the intermediary comparisons 
 of $a<^{\exh}_{\phi} ab$ and $ab <^{\exh}_{\phi} b$.
 Importantly, adding the comparison $a <^{\exh}_{\phi} b$
 to $\le^{\exh}_{\phi}$ does not misrepresent $\re$: 
 the augmented relation underlies the same revision operator.
-This raises the hope of a more general strategy,
+This raises the hope of a general strategy,
 and we will soon see the conditions under which this strategy is successful.
 
 So far, so good.
@@ -1028,7 +1026,7 @@ The problem, as has been already documented \cite{DelgrandeP15,DelgrandePW18},
 is that these elements alone are not enough to 
 deliver a representation result. 
 A first indication that more needs to be done is the fact that
-assignments based on standard preorders 
+assignments based on standard, distance-based preorders 
 (either total or partial, r-faithful or not) 
 cannot be used to induce $\HHH$-revision operators.
 
@@ -1223,7 +1221,7 @@ cannot be used to induce $\HHH$-revision operators.
 	$\le^{\hamming,\:\max}_{\phi}$,
 	$\le^{\hamming,\:\leximax}_{\phi}$
 	and
-	$\re^{\hamming,\:\ssum}_{\phi}$.
+	$\le^{\hamming,\:\ssum}_{\phi}$.
 	Also, $\le^{\partialPre}_{\phi}$
 	coincides on the models of $\phi$ and $\mu$
 	with the partial preorder $\le^{(\dd_{1},\dd_{2}),\:\min}_{\phi}$
@@ -1616,7 +1614,7 @@ that satisfy postulates $\ppr{1-6}$.
 	$\px_{ab,ac,bc}$ of $\{ab,ac,bc\}$,
 	but $[\px_{ab,ac,bc}]=\cl_{\horn}(\{ab,ac,bc\})=\{\emptyset,a,b,c,ab,ac,bc\}$,
 	and simply asking 
-	that $\min^{\exh}_{\le_{\phi}}[\px_{ab,ac,bc}]$ is non-empty 
+	that $\min_{\le^{\exh}_{\phi}}[\px_{ab,ac,bc}]$ is non-empty 
 	does not prevent the cycle.
 	
 	A tentative fix for this situation is to 
@@ -2012,7 +2010,7 @@ the following lemma will prove crucial.
 	we have that $w_1\notin[\phi\re\px_{1,2}]$,
 	which is a contradiction.
 	
-	\emph{Case 2}
+	\emph{Case 2}.
 	If $w_0 <^{\exc}_{\phi} w_1$,
 	then, again, by the definition of the exclusive revealed assignment,
 	we have that $w_1\notin [\phi\re\px_{0,1}]$.
